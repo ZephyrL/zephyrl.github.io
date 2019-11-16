@@ -4,4 +4,8 @@ title: 关于
 permalink: /about/
 ---
 
-这是一个关于页面，请编辑about.md以介绍你的博客。
+# ABOUT
+
+Hello there! Welcome to my workshop!
+
+Here I maintain some projects which were completed through my education, as well as some which were built based on myself interest. I hope you could find something that 
