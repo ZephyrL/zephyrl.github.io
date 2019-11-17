@@ -1,0 +1,53 @@
+I"�<p><img src="/images/woc/tree.png" alt="img" /></p>
+
+<p>Weird-o-Compiler is the outcome of the course Compiler Theory which I took in my third year of bachelor’s education. The work is collaborated with Yehang Yin, a reliable and respectable friend of mine. We also take the Numerical Analysis course together.</p>
+
+<h2 id="what-woc-supports-and-what-not">What WoC Supports and what not?</h2>
+
+<p>WoC is a C-like and Javasricpt-like compiler with weird restrictions</p>
+
+<p>Supports:</p>
+<ul>
+  <li>functions, nested functions</li>
+  <li>all loop kinds of C, break &amp; continue</li>
+  <li>branching (if &amp; else)</li>
+  <li>label and goto</li>
+  <li>variable</li>
+  <li>all logical and numerical operations of C</li>
+</ul>
+
+<p>Not supports:</p>
+<ul>
+  <li>No MACRO</li>
+  <li>No struct &amp; union</li>
+  <li>No pointers</li>
+  <li>No dynamic strong types (but have built-in types)</li>
+</ul>
+
+<h2 id="what-is-the-function-of-woc-how-to-work-with-it">What is the function of WoC? How to work with it?</h2>
+
+<ol>
+  <li>
+    <p>After build the project on your platform (Linux 64-bit suggested),</p>
+  </li>
+  <li>
+    <p>Write a piece of code as you are programming in C, but be careful with the rules</p>
+  </li>
+  <li>
+    <p>Run the following command to Compile with WoC</p>
+  </li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>woc [file] [options]
+Options:
+        -a      Generating AST in JSON
+        -i      Generating IR tree in JSON
+        -s      Generating symbol table for scopes in JSON
+        -c      Generating assemble code, in WOCASM 
+        -d      Debug mode, programmer should define usage in parse.y
+</code></pre></div></div>
+
+<h3 id="side-notes">Side Notes</h3>
+
+<p>You might wonder where the name of this project comes from, actually, we just thought the syntax we designed is kind of weird, so we would like to name it Weird Compiler, however then we realize the abbreviation of it is not supposed to be WC anyway, so we add an emoji like “<strong>-o-</strong>” between the words, which at the same time represents our emotions developing such a compiler, yarning in the midnights – it seems not a easy task to do with anyway. Then Eventually, the compiler is call WoC.</p>
+:ET

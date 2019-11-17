@@ -1,11 +1,11 @@
 ---
 layout: page
-title: 关于
+title: ABOUT - Zephyrl's Workshop
 permalink: /about/
 ---
 
-# ABOUT
+# Welcome to my workshop!
 
-Hello there! Welcome to my workshop!
+Hello there! 
 
 Here I maintain some projects which were completed through my education, as well as some which were built based on myself interest. I hope you could find something that 

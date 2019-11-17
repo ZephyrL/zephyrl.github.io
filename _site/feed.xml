@@ -1,386 +1,536 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-11-16T14:00:27+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Zephyrl</title><subtitle>My Workshop</subtitle><entry><title type="html">LOFFER文档</title><link href="http://localhost:4000/document/" rel="alternate" type="text/html" title="LOFFER文档" /><published>2019-06-02T00:00:00+02:00</published><updated>2019-06-02T00:00:00+02:00</updated><id>http://localhost:4000/document</id><content type="html" xml:base="http://localhost:4000/document/">&lt;p&gt;LOFFER是个可以帮助你get off from LOFTER的软件（我知道这个pun很烂）。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-11-17T01:35:16+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Zephyrl</title><subtitle>My Workshop</subtitle><entry><title type="html">Signed Distance Field and Applications</title><link href="http://localhost:4000/SDF/" rel="alternate" type="text/html" title="Signed Distance Field and Applications" /><published>2019-07-05T00:00:00+02:00</published><updated>2019-07-05T00:00:00+02:00</updated><id>http://localhost:4000/SDF</id><content type="html" xml:base="http://localhost:4000/SDF/">&lt;p&gt;&lt;a href=&quot;https://github.com/ZephyrL/DH2323Project&quot;&gt;Link to this project on Github&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;这是一个可以通过Fork直接发布在GitHub的Jekyll博客，你不需要编写代码或使用命令行即可获得一个部署在GitHub的博客。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/sdf/2019-07-02 10_39_05.bmp&quot; alt=&quot;2019-07-02 10_39_05&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;当你看到不认识的术语，请忽略它，我知道程序员不说人话，我都不是程序员但是我已经开始意识到这是因为我们不知道这些概念用人话怎么说。&lt;/p&gt;
+&lt;p&gt;This project works as the course outcome of DH2323 Project at KTH, Computer Graphics and Interaction, which is a C++ implementation of &lt;strong&gt;Ray-marched ambient occlusion&lt;/strong&gt; rendered with &lt;strong&gt;Signed Distance Field&lt;/strong&gt;. This article is basically a copy of the readme text of this project at its repository.&lt;/p&gt;
 
-&lt;p&gt;以下我会尽量用人话解说如何使用这个……LOFFER。&lt;/p&gt;
+&lt;h2 id=&quot;0-logs&quot;&gt;0. Logs&lt;/h2&gt;
 
-&lt;h2 id=&quot;注意&quot;&gt;注意&lt;/h2&gt;
-
-&lt;p&gt;LOFFER是一个&lt;strong&gt;博客模板&lt;/strong&gt;，使用GitHub Pages发布个人博客是没有任何问题的。 &lt;strong&gt;但是:&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&quot;features&quot;&gt;Features&lt;/h4&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;请勿发布成人向内容&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;不要将大量图片上传到GitHub&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Common mesh loading with &lt;em&gt;ASSIMP&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Ray Marching with SDF&lt;/li&gt;
+  &lt;li&gt;SDF calculation of various constructive geometries&lt;/li&gt;
+  &lt;li&gt;SDF generation for arbitrary mesh (e.g. bunny.ply)&lt;/li&gt;
+  &lt;li&gt;Store and Load SDF texture data&lt;/li&gt;
+  &lt;li&gt;Scene combined with mesh and constructive geometries&lt;/li&gt;
+  &lt;li&gt;Shading, with soft shadows, ambient occlusion&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;如有疑问，请阅读&lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages官方说明&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;另外，同人作品更好的发布平台是&lt;a href=&quot;https://archiveofourown.org/&quot;&gt;AO3&lt;/a&gt;，你想你发在AO3还有tag还有kudos还有人看，是吧？&lt;/p&gt;
-
-&lt;h2 id=&quot;如何使用&quot;&gt;如何使用&lt;/h2&gt;
-
-&lt;p&gt;首先，这个博客主题适应手机阅读，但是，要使用它建立你自己的博客，你需要上电脑操作。&lt;/p&gt;
-
-&lt;h3 id=&quot;第一步-fork到你的github&quot;&gt;第一步 Fork到你的GitHub&lt;/h3&gt;
-
-&lt;p&gt;请点击&lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt;，注册一个GitHub账户。我们可以理解Git就是个文件版本管理系统，本身并不需要会代码即可使用。&lt;/p&gt;
-
-&lt;p&gt;现在你看到的LOFFER，是作为一个GitHub上的Repository（代码库）存在的，你可以把这个代码库复制到你自己的GitHub账户中，这个操作叫做Fork。&lt;/p&gt;
-
-&lt;p&gt;点击&lt;a href=&quot;https://github.com/FromEndWorld/LOFFER&quot;&gt;LOFFER&lt;/a&gt;，进入LOFFER的GitHub Repository页面，然后点Fork：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/fork.gif&quot; alt=&quot;gif&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;然后你立刻就可以看到LOFFER再次出现，这次它已经属于你了，这里我建议你重命名它，点击settings，给你的博客起个名字（请尽量使用字母而非中文）。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/rename.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;然后，向下拉页面，你会看到“GitHub Pages”，这是GitHub内置的网站host服务，选择master，如图所示：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/pages.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;在几秒钟后，刷新此页面，你通常会看到这个绿色的东西（如果没看到，多等一会），你的网站已经发布成功，点击这个链接，即可查看：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/published.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;你可能会看到网站长得很丑，请继续下一步.&lt;/p&gt;
-
-&lt;h3 id=&quot;第二步-设置站点信息&quot;&gt;第二步 设置站点信息&lt;/h3&gt;
-
-&lt;p&gt;在你的博客的GitHub代码库页面里，选择Code，文件列表里选择_config.yml，点击打开，点击右上角笔形图标修改文档。&lt;/p&gt;
-
-&lt;p&gt;修改完成后，点击“Commit changes”。每次修改过代码库并且commit后，GitHub Pages都会自动重新发布网站，只要等上几分钟，再次刷新你的博客页面，就会看到你的修改了。&lt;/p&gt;
-
-&lt;p&gt;还有一点，&lt;strong&gt;LOFFER使用的是MIT协议，大意就是全部开源随意使用，如果你要保留自己博文的权利，请编辑LICENSE文件，写上类似“_posts中的文档作者保留权利”这样的内容。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;第三步-发布博文&quot;&gt;第三步 发布博文&lt;/h3&gt;
-
-&lt;p&gt;在你的博客的GitHub代码库页面里，点开_posts文件夹，这里面就是你的博客文章。&lt;/p&gt;
-
-&lt;p&gt;这些文章使用的格式是Markdown，文件后缀名是md，这是一种非常简单易用的有格式文本标记语言，你应该已经注意到，在LOFFER自带的示例性博文中有一篇中文的Markdown语法介绍。&lt;/p&gt;
-
-&lt;p&gt;更简单的办法是使用&lt;a href=&quot;https://typora.io/&quot;&gt;Typora&lt;/a&gt;，这是一个全图形化界面，全实时预览的Markdown写作软件，非常轻量，而且免费。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Typora.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;在发布博文前，你需要在文章的头部添加这样的内容，包括你的文章标题，发布日期，作者名，和tag等。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
-layout: post
-title: LOFFER文档
-date: 2019-06-02
-Author: 来自中世界
-categories: 
-tags: [sample, document]
-comments: true
---- 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;完成后，保存为.md文件，文件名是date-标题，例如 2019-06-02-document.md (注意这里的标题会成为这个post的URL，所以推荐使用字母而非中文，它不影响页面上显示的标题)。然后上传到_posts文件夹，commit，很快就可以在博客上看到新文章了。&lt;/p&gt;
-
-&lt;h3 id=&quot;可选图片怎么办&quot;&gt;可选：图片怎么办？&lt;/h3&gt;
-
-&lt;p&gt;少量图片可以上传到images文件夹，然后在博文中添加。&lt;/p&gt;
-
-&lt;p&gt;但是GitHub用来当做图床有滥用之嫌，如果你的博客以图片为主，建议选择外链图床，例如&lt;a href=&quot;https://sm.ms/&quot;&gt;sm.ms&lt;/a&gt;就是和很好的选择。&lt;/p&gt;
-
-&lt;p&gt;如果想要寻找更适合自己的图床，敬请Google一下。&lt;/p&gt;
-
-&lt;p&gt;在博文中添加图片的Markdown语法是：&lt;code class=&quot;highlighter-rouge&quot;&gt;![图片名](URL)&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;可选添加评论区&quot;&gt;可选：添加评论区&lt;/h3&gt;
-
-&lt;p&gt;LOFFER支持Disqus评论，虽然Disqus很丑，但是它是免费的，设置起来又方便，因此大家也就不要嫌弃它。&lt;/p&gt;
-
-&lt;p&gt;首先，注册一个&lt;a href=&quot;https://disqus.com/&quot;&gt;Disqus&lt;/a&gt;账户，我们可以选择这个免费方案：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Disqus-plan.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;注册成功后，新建一个站点（site），以LOFFER为例设置步骤如下：&lt;/p&gt;
-
-&lt;p&gt;首先站点名LOFFER，生成了shortname是loffer，类型可以随便选。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Disqus-1.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;安装时选择Jekyll。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Disqus-2.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;最后填入你的博客地址，语言可以选中文，点Complete，即可！&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Disqus-3.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;然后需要回到你的博客，修改_config.yml文件，在disqus字段填上你的shortname，commit，完成！&lt;/p&gt;
-
-&lt;h3 id=&quot;导入lofter的内容&quot;&gt;导入LOFTER的内容&lt;/h3&gt;
-
-&lt;p&gt;这部分由于LOFTER的导出文件十分&lt;del&gt;优秀&lt;/del&gt;，需要另外解决。&lt;/p&gt;
-
-&lt;p&gt;诸位可以使用&lt;a href=&quot;http://underdream.lofter.com/post/38ea7d_1c5d8a983&quot;&gt;墨问非名太太的脚本&lt;/a&gt;，其中选择Jekyll输出即可。&lt;/p&gt;
-
-&lt;p&gt;我个人也在折腾一个脚本，目前还没有完全debug清楚，不管如何，请先在lofter里导出一下，存在本地也是好的，贴吧可以让2017以前所有内容全部消失，中国互联网，没什么不可能发生的。&lt;/p&gt;
-
-&lt;h2 id=&quot;致谢&quot;&gt;致谢&lt;/h2&gt;
+&lt;h4 id=&quot;to-dos&quot;&gt;To-Do’s&lt;/h4&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll&lt;/a&gt; - 这是本站存在的根基&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/aweekj/kiko-now&quot;&gt;Kiko-now&lt;/a&gt; - 我首先是fork这个主题，然后再其上进行修改汉化，才有了LOFFER&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://fontawesome.com/&quot;&gt;Font Awesome&lt;/a&gt; - 社交网络图标来自FontAwesome的免费开源内容&lt;/li&gt;
+  &lt;li&gt;Camera: &lt;del&gt;keyboard&lt;/del&gt; and mouse control&lt;/li&gt;
+  &lt;li&gt;&lt;del&gt;SDF: per-mesh SDF generation in preprocessing&lt;/del&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;del&gt;SDF: texture caching and storing (compressing?)&lt;/del&gt;&lt;/li&gt;
+  &lt;li&gt;Landscape: represent global height field, and combine with SDF&lt;/li&gt;
+  &lt;li&gt;&lt;del&gt;Shader: shading function, coloring, ambient occlusion&lt;/del&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;del&gt;File System: mesh name, I/O method, SDF importing (avoid to generate the same SDF each run, time consuming!)&lt;/del&gt;&lt;/li&gt;
+  &lt;li&gt;Mesh &amp;amp; SDF: mesh instancing, apply mesh transformations to SDF query&lt;/li&gt;
+  &lt;li&gt;SDF generation multi-tasking&lt;/li&gt;
+  &lt;li&gt;GPU: transport the project to GPU&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;帮助这个项目&quot;&gt;帮助这个项目&lt;/h2&gt;
-
-&lt;p&gt;介绍更多人来使用它，摆脱lofter自由飞翔！&lt;/p&gt;
-
-&lt;p&gt;当然如果单说写同人的话，我还是建议大家都去AO3，但是自家博客自己架也很酷炫，你还可以选择很多其他的forkable Jeykll主题，GitHub上有很多，或者试试其他博客架设工具，例如Hexo，与代码斗其乐无穷。&lt;/p&gt;
-
-&lt;p&gt;最后，回到&lt;a href=&quot;https://github.com/FromEndWorld/LOFFER&quot;&gt;LOFFER&lt;/a&gt;，给我点一个☆吧！&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/givemefive.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="sample" /><category term="document" /><summary type="html">LOFFER是个可以帮助你get off from LOFTER的软件（我知道这个pun很烂）。 这是一个可以通过Fork直接发布在GitHub的Jekyll博客，你不需要编写代码或使用命令行即可获得一个部署在GitHub的博客。 当你看到不认识的术语，请忽略它，我知道程序员不说人话，我都不是程序员但是我已经开始意识到这是因为我们不知道这些概念用人话怎么说。 以下我会尽量用人话解说如何使用这个……LOFFER。 注意 LOFFER是一个博客模板，使用GitHub Pages发布个人博客是没有任何问题的。 但是: 请勿发布成人向内容 不要将大量图片上传到GitHub 如有疑问，请阅读GitHub Pages官方说明。 另外，同人作品更好的发布平台是AO3，你想你发在AO3还有tag还有kudos还有人看，是吧？ 如何使用 首先，这个博客主题适应手机阅读，但是，要使用它建立你自己的博客，你需要上电脑操作。 第一步 Fork到你的GitHub 请点击GitHub，注册一个GitHub账户。我们可以理解Git就是个文件版本管理系统，本身并不需要会代码即可使用。 现在你看到的LOFFER，是作为一个GitHub上的Repository（代码库）存在的，你可以把这个代码库复制到你自己的GitHub账户中，这个操作叫做Fork。 点击LOFFER，进入LOFFER的GitHub Repository页面，然后点Fork： 然后你立刻就可以看到LOFFER再次出现，这次它已经属于你了，这里我建议你重命名它，点击settings，给你的博客起个名字（请尽量使用字母而非中文）。 然后，向下拉页面，你会看到“GitHub Pages”，这是GitHub内置的网站host服务，选择master，如图所示： 在几秒钟后，刷新此页面，你通常会看到这个绿色的东西（如果没看到，多等一会），你的网站已经发布成功，点击这个链接，即可查看： 你可能会看到网站长得很丑，请继续下一步. 第二步 设置站点信息 在你的博客的GitHub代码库页面里，选择Code，文件列表里选择_config.yml，点击打开，点击右上角笔形图标修改文档。 修改完成后，点击“Commit changes”。每次修改过代码库并且commit后，GitHub Pages都会自动重新发布网站，只要等上几分钟，再次刷新你的博客页面，就会看到你的修改了。 还有一点，LOFFER使用的是MIT协议，大意就是全部开源随意使用，如果你要保留自己博文的权利，请编辑LICENSE文件，写上类似“_posts中的文档作者保留权利”这样的内容。 第三步 发布博文 在你的博客的GitHub代码库页面里，点开_posts文件夹，这里面就是你的博客文章。 这些文章使用的格式是Markdown，文件后缀名是md，这是一种非常简单易用的有格式文本标记语言，你应该已经注意到，在LOFFER自带的示例性博文中有一篇中文的Markdown语法介绍。 更简单的办法是使用Typora，这是一个全图形化界面，全实时预览的Markdown写作软件，非常轻量，而且免费。 在发布博文前，你需要在文章的头部添加这样的内容，包括你的文章标题，发布日期，作者名，和tag等。</summary></entry><entry><title type="html">Markdown语法简介</title><link href="http://localhost:4000/chinese-markdown-cheatsheet/" rel="alternate" type="text/html" title="Markdown语法简介" /><published>2013-07-16T00:00:00+02:00</published><updated>2013-07-16T00:00:00+02:00</updated><id>http://localhost:4000/chinese-markdown-cheatsheet</id><content type="html" xml:base="http://localhost:4000/chinese-markdown-cheatsheet/">&lt;p&gt;本中文版Markdown语法简介来自博客 &lt;a href=&quot;https://blog.shengbin.me/posts/markdown-syntax&quot;&gt;https://blog.shengbin.me/posts/markdown-syntax&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Markdown语法的完整介绍在这里：&lt;a href=&quot;http://daringfireball.net/projects/markdown/syntax&quot;&gt;http://daringfireball.net/projects/markdown/syntax&lt;/a&gt;。下面整理的这些为了方便写博客时参考。&lt;/p&gt;
-
-&lt;h3 id=&quot;分段与分行&quot;&gt;分段与分行&lt;/h3&gt;
-
-&lt;p&gt;以一个或多个空行来隔开段落；以两个或多个空格来段内换行。&lt;/p&gt;
-
-&lt;h3 id=&quot;标题&quot;&gt;标题&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;This is an H1
-=============
-
-This is an H2
--------------
-
-# This is an H1
-
-##  This is an H2
-
-######  This is an H6
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;引用&quot;&gt;引用&lt;/h3&gt;
-
-&lt;p&gt;在每一行前面写一个&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&lt;/code&gt;：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
-&amp;gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
-&amp;gt; Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
-&amp;gt;
-&amp;gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
-&amp;gt; id sem consectetuer libero luctus adipiscing.
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;效果：&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.&lt;/p&gt;
-
-  &lt;p&gt;Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse id sem consectetuer libero luctus adipiscing.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;或者在每一段前面写一个&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&lt;/code&gt;：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
-consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
-Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
-
-&amp;gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
-id sem consectetuer libero luctus adipiscing.
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;多重引用&quot;&gt;多重引用&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; This is the first level of quoting.
-&amp;gt;
-&amp;gt; &amp;gt; This is nested blockquote.
-&amp;gt;
-&amp;gt; Back to the first level.
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;效果：&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;This is the first level of quoting.&lt;/p&gt;
-
-  &lt;blockquote&gt;
-    &lt;p&gt;This is nested blockquote.&lt;/p&gt;
-  &lt;/blockquote&gt;
-
-  &lt;p&gt;Back to the first level.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;列表&quot;&gt;列表&lt;/h3&gt;
-
-&lt;p&gt;列表项占一行，以*、+、-开头即可：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;*   Red
-*   Green
-*   Blue
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;效果：&lt;/p&gt;
+&lt;h2 id=&quot;i-environment--requirements&quot;&gt;I. Environment / Requirements&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Red&lt;/li&gt;
-  &lt;li&gt;Green&lt;/li&gt;
-  &lt;li&gt;Blue&lt;/li&gt;
+  &lt;li&gt;Platform: Ubuntu 16.04 LTS&lt;/li&gt;
+  &lt;li&gt;Processer: Intel Core i7-8700&lt;/li&gt;
+  &lt;li&gt;Compiler: gcc(g++) 5.4.0 (should be fine with any recent versions)&lt;/li&gt;
+  &lt;li&gt;Programming language: C++&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;有序列表只需要将上述标记符换成数字加句点。而且顺序由书写顺序决定，与数字无关，但数字需要从1开始。例如：&lt;/p&gt;
+&lt;h4 id=&quot;tools-and-third-party-libraries&quot;&gt;Tools and Third-party libraries&lt;/h4&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1\.  Bird
-3.  McHale
-2.  Parish
+&lt;p&gt;cmake:&lt;/p&gt;
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo apt install cmake&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;效果：&lt;/p&gt;
+&lt;p&gt;SDL:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo apt install libsdl-dev&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;ASSIMP:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo apt install libassimp-dev libassimp-tuils&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;ii-how-tos&quot;&gt;II. How-to’s&lt;/h2&gt;
+
+&lt;h4 id=&quot;how-to-run&quot;&gt;How to run?&lt;/h4&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cd //path/to/Project/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Generate the project and run :&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Bird&lt;/li&gt;
-  &lt;li&gt;McHale&lt;/li&gt;
-  &lt;li&gt;Parish&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cmake CMakeList.txt&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;./Run&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;每一个列表项可以多行：&lt;/p&gt;
+&lt;p&gt;In case you cannot generate the project with CMake, check if there exist &lt;strong&gt;CMakeCache.txt&lt;/strong&gt; cache file in the folder, please remove it first:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
-viverra nec, fringilla in, laoreet vitae, risus.
-*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
-Suspendisse id sem consectetuer libero luctus adipiscing.
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo rm CMakeCache.txt&lt;/code&gt;&lt;/p&gt;
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h4 id=&quot;how-to-make-full-use&quot;&gt;How to make full use?&lt;/h4&gt;
 
-&lt;p&gt;效果：&lt;/p&gt;
+&lt;p&gt;If you have the interest to read the codes or make modifications, please feel free and go ahead. And here are some tips before you start.&lt;/p&gt;
+
+&lt;p&gt;For convenience, I define a file called &lt;strong&gt;debug.h&lt;/strong&gt; in the &lt;strong&gt;Project/src/&lt;/strong&gt; folder, enclose you can find 4 macros&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#define DEBUG
+#define TIMING
+#define SCREENSHOT
+#define PREZ
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;these are switches that control the functions of the program.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.&lt;/li&gt;
-  &lt;li&gt;Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse id sem consectetuer libero luctus adipiscing.&lt;/li&gt;
+  &lt;li&gt;DEBUG: output some useful information of current run in the console.&lt;/li&gt;
+  &lt;li&gt;TIMING: output frame render time in the console.&lt;/li&gt;
+  &lt;li&gt;SCREENSHOT: save the last frame before close into &lt;strong&gt;Project//images/sdf/&lt;/strong&gt; as a .bmp file&lt;/li&gt;
+  &lt;li&gt;PREZ: render additional geometries in the scene when TRUE, otherwise only render the bunny.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;代码块&quot;&gt;代码块&lt;/h3&gt;
+&lt;p&gt;Another file called “parameters.h” in the same folder, include all the parameters that use to control the scene, distance field, camera and light. Things are commented, and you could have a try to change some of them then check the outcome.&lt;/p&gt;
 
-&lt;p&gt;每一行前面缩进四个或以上个空格，就认为是开始了一段代码块。代码块内原样输出。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;This is a normal paragraph:
-
-    This is a code block.
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;效果：&lt;/p&gt;
-
-&lt;p&gt;This is a normal paragraph:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;This is a code block.
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;横线&quot;&gt;横线&lt;/h3&gt;
-
-&lt;p&gt;三个或更多个&lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt;（它们之间可以有空格）会产生横线：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;* * *
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;效果：&lt;/p&gt;
+&lt;p&gt;Don’t forget to recompile every time you modify any file, simply enter &lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt; in the console.&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;链接&quot;&gt;链接&lt;/h3&gt;
+&lt;h2 id=&quot;1-introduction&quot;&gt;1. Introduction&lt;/h2&gt;
 
-&lt;p&gt;内嵌链接：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Signed Distance Field&lt;/strong&gt; (SDF) is a variation of distance field, which in a 3D(2D) space maps a &lt;em&gt;position&lt;/em&gt; to its distance to the &lt;em&gt;nearest&lt;/em&gt; plane (edge). Distance field has been applied in many studies, such as image processing, physics, and computer graphics. In the context of computer graphics, distance fields are usually signed, aka. signed distance field, to indicate whether certain position is inside a mesh or not.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;I get 10 times more traffic from [Google](http://google.com/ &quot;Google&quot;)
-than from [Yahoo](http://search.yahoo.com/ &quot;Yahoo Search&quot;) or
-[MSN](http://search.msn.com/ &quot;MSN Search&quot;).
+&lt;p&gt;In computer graphics and game development, SDF shows great versatility, it can be used for collision test, mesh representation, ray tracing, etc. Besides, people find that it comes along with some bonus when the scene is rendered with ray-tracing (namely, ray-marching) algorithms – shadow effects like &lt;strong&gt;soft shadows&lt;/strong&gt; and &lt;strong&gt;ambient occlusion&lt;/strong&gt; can be produced with almost no extra cost.&lt;/p&gt;
 
+&lt;p&gt;This project is about a start-from-scratch C++ implementation of a &lt;strong&gt;real-time ray marching renderer&lt;/strong&gt;, which includes a baking tool of SDF texture and produces soft shadow effects. During the implementation we make use of some existing tools: ASSIMP for mesh importing and  for screen presentation. All references will be listed at the end of this document.&lt;/p&gt;
+
+&lt;h2 id=&quot;2-cornerstones&quot;&gt;2. Cornerstones&lt;/h2&gt;
+
+&lt;h4 id=&quot;21-camera-and-screen-set-up&quot;&gt;2.1 Camera and screen set-up&lt;/h4&gt;
+
+&lt;p&gt;The camera working for ray tracing is different from ones working for conventional pipeline; Instead of converting everything to the camera’s view space, ray tracing camera shots rays into the scene, so that the rays should be transformed from screen space to world space.&lt;/p&gt;
+
+&lt;p&gt;As the final deliverable was expected to be a navigator where you can check the objects from any direction, we preserve the idea to rotate the camera  around the origin, and define the &lt;code class=&quot;highlighter-rouge&quot;&gt;Camera&lt;/code&gt; class in a LookAt() style. Besides, it contains necessary members such as screen configurations and view frustum to generate rays correctly. The definition of the class is shown in the snippet below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sdf/Code-camera.png&quot; alt=&quot;Code-camera&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CameraController&lt;/code&gt; is the class to move the camera around, it is implemented with keyboard listeners; while it could be more complete by adding mouse listeners, which is not yet implemented.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sdf/Code-cameracontrol.png&quot; alt=&quot;Code-cameracontrol&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To set pixels according to a frame rendered we furthermore introduce the &lt;code class=&quot;highlighter-rouge&quot;&gt;Screen&lt;/code&gt; class, which is a common pack-up of the SDL functions, since they’re provided in the labs, we won’t talk much about it.&lt;/p&gt;
+
+&lt;h4 id=&quot;22-scene-model-and-mesh-loading&quot;&gt;2.2 Scene, model and mesh loading&lt;/h4&gt;
+
+&lt;p&gt;We use ASSIMP to help load various format of mesh files, and define a &lt;code class=&quot;highlighter-rouge&quot;&gt;Mesh&lt;/code&gt; class to as the basic integrated unit of scene representation. The scratch of this class refer to the mesh class provided by https://learnopengl.com/, while in practice the codes are highly adapt to the use of this project.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sdf/Code-mesh.png&quot; alt=&quot;Code-mesh&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The buffer handle used for OpenGL is removed, we keep the mesh and include bounding box, transform and distance field data of the mesh. Additionally, we give name to meshes, in order to enable saving/loading distance field data afterwards.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Mesh&lt;/code&gt; is contained within a &lt;code class=&quot;highlighter-rouge&quot;&gt;Model&lt;/code&gt;, and models are contained by &lt;code class=&quot;highlighter-rouge&quot;&gt;Scene&lt;/code&gt;, we keep this level structure to make sure the codes are prepared for extension, since at present we only use a bunny mesh in this project.&lt;/p&gt;
+
+&lt;h2 id=&quot;3-core-functions&quot;&gt;3. Core Functions&lt;/h2&gt;
+
+&lt;h4 id=&quot;31-sdf-generation&quot;&gt;3.1 SDF generation&lt;/h4&gt;
+
+&lt;p&gt;When a mesh is constructing, the program would automatically create the distance field data for it. If you have read about distance field, you may know something called &lt;a href=&quot;http://www.iquilezles.org/www/articles/distfunctions/distfunctions.htm&quot;&gt;analytical distance functions&lt;/a&gt;, which calculate the exact distance from any position to certain geometry shapes, like a box or a cylinder. However, the distance field of arbitrary mesh is not as simple as those geometries, and approaches which decompose meshes into constructive geometries seem not practical. In this project, the solution is sampling, which is to do brute-force ray tracing at a number of sample points and record the minimum distance.&lt;/p&gt;
+
+&lt;p&gt;In other words the local space of the mesh is &lt;em&gt;voxelized&lt;/em&gt;, to calculate how many voxels we use to represent the distance field, we set a default &lt;code class=&quot;highlighter-rouge&quot;&gt;DF_MIN_NUM_VOXEL_PER_DIM=8&lt;/code&gt; which means there are at least 8 voxels on the shortest axis of the local bounding box, then we keep a variable &lt;code class=&quot;highlighter-rouge&quot;&gt;resolution&lt;/code&gt; to control the actual amount of voxels, the higher this value, the more voxels created.&lt;/p&gt;
+
+&lt;p&gt;The bunny mesh has some holes hence is not completely closed, so we applied a method to distinguish inside sample points, the basic idea is to keep a counter indicates the number of rays hit on back faces, if the counter exceeds a certain number (proportion), the sample point should be inside of the mesh.&lt;/p&gt;
+
+&lt;p&gt;For readability here put the pseudo-code written in Python, as follows,&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# DF bbox should be slightly larger
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BBox&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CalculateDistanceFieldBBox&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mesh&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bbox&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Calculate Volume grid dimensions according to bbox and resolution
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;VolumeDimension&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CalculateVoxelDimension&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BBox&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resolution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Generate sample ray direction
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SampleDirections&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GenerateSampleRayDirections&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# for each sample location, do brute-force ray tracing
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VolumeDimension&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;XYZ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;minDistance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VolumeMaxDistance&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sampleDir&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SampleDirections&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# calculate ray(pos, dir)
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;ray&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LocalSpace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sampleDir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# ray-mesh intersection
+&lt;/span&gt;        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;boolHit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;curDistance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hitNormal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Intersect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mesh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;boolHit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;hit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;# bac kface counter
+&lt;/span&gt;            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sampleDir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hitNormal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;hitBack&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;minDistance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;minDistance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;curDistance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            
+	&lt;span class=&quot;c1&quot;&gt;# ! the position is inside if &amp;gt;50% rays hit back face
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hitBack&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SampleDirections&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;minDistance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;# ! for meshes that is not entirely close, 
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# ! this is the smooth operation on the border of in-outside. 
+&lt;/span&gt;	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;minDistance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;voxelSize&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hitBack&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.95&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;minDistance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;abs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;minDistance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        
+    &lt;span class=&quot;n&quot;&gt;OutData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;minDistance&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;或参考文献式链接（缺省的链接标记认为与文本一致）：&lt;/p&gt;
+&lt;h5 id=&quot;complexity-problem&quot;&gt;complexity problem&lt;/h5&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;I get 10 times more traffic from [Google] [1] than from
-[Yahoo] [2] or [MSN] [3].
+&lt;p&gt;The generation of distance field works fine when we set &lt;code class=&quot;highlighter-rouge&quot;&gt;resolution = 1.0f&lt;/code&gt;, that is to use 8 voxels on the shortest axis, it applies to the bunny, creating a 10x10x8 grid, and within each grid cell there runs 1200 brute-force ray tracing; as we use the zipped bunny mesh which has 4k triangles, the calculation of distance field takes about half a minute.&lt;/p&gt;
 
-  [1]: http://google.com/        &quot;Google&quot;
-  [2]: http://search.yahoo.com/  &quot;Yahoo Search&quot;
-  [3]: http://search.msn.com/    &quot;MSN Search&quot;
+&lt;p&gt;Things get tough when higher resolution of distance field is required, since we are using CPU processors the task is completely in a sequential style, it takes hours to calculate a distance field of 41x40x32 grid cells. To alleviate such problem we promote three possible solution, the (1) first one is to transport the calculation to GPU, which would largely reduce the running time; the (2) second is to enable multi-tasking on CPU, a way that is used by the Unreal Engine 4 for distance field generation; the (3) third is to try another method to calculate the shortest distance, i.e. the point-and-triangle-feature algorithm proposed in “Real-time Collision Detection” by Christer Ericson, we didn’t choose this method because it has limitations when the mesh is not closed, besides it’s less intuitive than ray tracing. The project is still growing and it may introduce the first or second solution later.&lt;/p&gt;
 
-I get 10 times more traffic from [Google][] than from
-[Yahoo][] or [MSN][].
+&lt;h4 id=&quot;32-ray-marching-algorithm-and-sdf&quot;&gt;3.2 Ray-marching algorithm and SDF&lt;/h4&gt;
 
-  [google]: http://google.com/        &quot;Google&quot;
-  [yahoo]:  http://search.yahoo.com/  &quot;Yahoo Search&quot;
-  [msn]:    http://search.msn.com/    &quot;MSN Search&quot;
+&lt;p&gt;Ray marching algorithm is a variation of ray tracing, and the thing we describe here is also known as “&lt;strong&gt;Sphere tracing&lt;/strong&gt;”. Sphere tracing algorithm should come with an exact or approximate SDF function &lt;code class=&quot;highlighter-rouge&quot;&gt;SDF(position)&lt;/code&gt; which describes the nearest distance value at any place in the space. In ray marching, the transportation of ray is decomposed into discrete steps, this is possible because the property of SDF guarantees that within this distance you won’t hit or miss anything, so that the ray can step as the &lt;a href=&quot;https://www.google.com/search?q=ray+marching&amp;amp;rlz=1C1GCEU_zh-CNCN855CN855&amp;amp;tbm=isch&amp;amp;source=iu&amp;amp;ictx=1&amp;amp;fir=ozxYkxrmCIjowM%253A%252CyLAtmMCY6hXOpM%252C%252Fm%252F0b2r6k&amp;amp;vet=1&amp;amp;usg=AI4_-kTzB3M_mZCSZwcyzO-pQdNtWB6KbQ&amp;amp;sa=X&amp;amp;ved=2ahUKEwj_hLud95XjAhVRFqYKHaGmBFYQ_h0wE3oECAgQBQ#imgrc=ozxYkxrmCIjowM:&amp;amp;vet=1&quot;&gt;figure&lt;/a&gt; (source: Google) below:&lt;/p&gt;
 
+&lt;p&gt;&lt;img src=&quot;/images/sdf/spheretrace.jpg&quot; alt=&quot;spheretrace&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Based on the idea, the pseudo code of sphere tracing algorithm is rather straightforward:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ray&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RaysCameraToPixel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;travel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;step&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;currentPos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;dist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;currentPos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_hit_threshold_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;step&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_max_step_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;# not hit &amp;amp; not overstep
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;travel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dist&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;# march a step
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;step&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;# increase step counter
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;currentPos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ray&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;travel&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;# next position
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;dist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SDF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;currentPos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;# sdf query
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# hit
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;shading&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;效果：&lt;/p&gt;
+&lt;p&gt;noted that we should set an upper bound for marching step, otherwise when a ray is almost parallel to a surface, the distance may converge very slow thus time consuming.&lt;/p&gt;
 
-&lt;p&gt;I get 10 times more traffic from &lt;a href=&quot;http://google.com/&quot; title=&quot;Google&quot;&gt;Google&lt;/a&gt; than from &lt;a href=&quot;http://search.yahoo.com/&quot; title=&quot;Yahoo Search&quot;&gt;Yahoo&lt;/a&gt; or &lt;a href=&quot;http://search.msn.com/&quot; title=&quot;MSN Search&quot;&gt;MSN&lt;/a&gt;.&lt;/p&gt;
+&lt;h5 id=&quot;implicit-distance-functions&quot;&gt;&lt;a href=&quot;http://www.iquilezles.org/www/articles/distfunctions/distfunctions.htm&quot;&gt;Implicit distance functions&lt;/a&gt;&lt;/h5&gt;
 
-&lt;p&gt;如果直接以链接地址作为链接文本，可以用如下快捷写法：&lt;/p&gt;
+&lt;p&gt;Implicit distance function is an analytical function that represents the distance to a much regular object in the space, introduced by Íñigo Quílez. The functions help represent a huge class of constructive geometries,  and are at many places used demos of distance functions. In our project we combine the bunny mesh and some basic geometries, rendering them together in a scene, as you may check in Chapter 4.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;http://www.shengbin.me&amp;gt; 效果：
+&lt;h4 id=&quot;33-distance-field-representation&quot;&gt;3.3 Distance Field Representation&lt;/h4&gt;
 
+&lt;p&gt;&lt;img src=&quot;/images/sdf/Code-DF.png&quot; alt=&quot;Code-DF&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;class DistanceFieldData&lt;/code&gt; consists of necessary data that represent the distance field of a mesh. The basic idea during this class design is considering how can we retrieve distance data in an efficient way, hence we restore the bounding box of the distance field and its size of grid. Besides the most important distance values, we also keeps the positions of the center of each grid as landmarks, avoiding the recalculation at render time.&lt;/p&gt;
+
+&lt;p&gt;You might discover that distance fields keep another bounding box apart from the original mesh, and we note that the bounding box of distance field should be bit &lt;strong&gt;larger&lt;/strong&gt;, this is due to the fact that you cannot generate a global distance field of a scene (because of limited RAM) therefore must keep the distance field of meshes locally; when a ray travels in the scene, there should be a transfer step before which the marching uses global SDF while after which uses local SDF, plus that this transfer shouldn’t be exactly on the border of the distance field, so use the &lt;em&gt;mesh&lt;/em&gt; bounding box as the border.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sdf/DF-illust.png&quot; alt=&quot;DF-illust&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;34-soft-shadows-and-ambient-occlusion&quot;&gt;3.4 Soft shadows and Ambient Occlusion&lt;/h4&gt;
+
+&lt;h5 id=&quot;soft-shadows&quot;&gt;Soft shadows&lt;/h5&gt;
+
+&lt;p&gt;Soft shadows we use in this project is also known as the &lt;strong&gt;penumbra&lt;/strong&gt;, these are certain areas of surface which is lighted but also somewhat occluded; Usually, this effect happens when the light source is larger than the object receiving light, while in the project we use a global directional light but inherit the basic idea. The Huygens–Fresnel principle indicates that a wavefront of light can be treated equally as a series of light sources, each of which continue to beam light to latter phases, so when the light path reaches near an opaque object, the light is partially occluded, that’s how we calculate soft shadows here.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sdf/Light-illust.jpg&quot; alt=&quot;Light-illust&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The source code of soft shadow calculation is given below, the parameters are named as their meanings.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sdf/Code-softshadow.png&quot; alt=&quot;Code-softshadow&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;ambient-occlusion&quot;&gt;Ambient Occlusion&lt;/h5&gt;
+
+&lt;p&gt;Ambient Occlusion is another shadowing effect that add soft shadows to a scene to make it looks good. The general idea is that opaque objects can influence ambient lights casting on other objects, however, to check if objects are close to one another is not that easy, so people have introduced cheaper approximation like Screen Space Ambient Occlusion (SSAO), Screen Space Directional Occlusion (SSDO), etc. They sometimes look fine while in other times create artefacts.&lt;/p&gt;
+
+&lt;p&gt;Distance Field Ambient Occlusion (DFAO) comes with distance field with almost no extra cost, with merely several more steps of SDF texturing it could create plausible realistic effects; the idea is also very intuitive: closer sample (step) points contributes more to the ambient occlusion to a surface, and closer objects create denser occlusion. Codes are shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sdf/Code-ao.png&quot; alt=&quot;Code-ao&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;4-outcomes&quot;&gt;4. Outcomes&lt;/h2&gt;
+
+&lt;h4 id=&quot;41-screenshots&quot;&gt;4.1 Screenshots&lt;/h4&gt;
+
+&lt;p&gt;The completion of this project takes some time, I make a recording screen-shot at each milestone. You may find the screen shots in the local folder &lt;strong&gt;./shots&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;After I complete the basic camera settings, the screen and the ray marching renderer, I create a plane and a sphere to test if the camera and the ray marching algorithm works fine.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sdf/2019-06-25 02_14_09.bmp&quot; alt=&quot;2019-06-25 02:14:09&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;After finishing the mesh importing and the distance field generation function, I use the generated distance function into the renderer, and it seems that the voxels are correctly detected.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sdf/2019-06-28 16_53_33.bmp&quot; alt=&quot;2019-06-28 16:53:33&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Instead of returning the value at the center of the voxel, now the distance function applies tri-linear interpolation, and the soft shadow part is added. Noted that the resolution of SDF is low at present, so the ears of bunny are flawed.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sdf/2019-06-28 20_41_48.bmp&quot; alt=&quot;2019-06-28 20:41:48&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;It takes some time to generate a more accurate distance field, now the bunny looks better; also at this time, to avoid regenerating the distance field every run, I give names to meshes, and add functions to import and export distance fields with files.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sdf/2019-06-29 09_20_22.bmp&quot; alt=&quot;2019-06-29 09_20_22&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Then I referred to the distance functions of geometries, put them together with the bunny.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sdf/2019-06-29 11_10_34.bmp&quot; alt=&quot;2019-06-29 11:10:34&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Now it’s time to give them colors, same time I add the ambient occlusion part into shading function.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sdf/2019-07-02 10_39_05.bmp&quot; alt=&quot;2019-07-02 10_39_05&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To help you identify the AO effect much clearer, I make a comparison here:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sdf/Compare-ao.png&quot; alt=&quot;Compare-ao&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;42-running-time&quot;&gt;4.2 Running time&lt;/h4&gt;
+
+&lt;p&gt;When the screen size is set 500x500 pixels, the render fps is about 2 frames/second, it runs slow due to large cost on SDF query, but if you modify the screen settings in &lt;strong&gt;src/parameters.h&lt;/strong&gt;, like using a 200x200 screen, the rendering would reach real-time level.&lt;/p&gt;
+
+&lt;h2 id=&quot;5-discussion&quot;&gt;5. Discussion&lt;/h2&gt;
+
+&lt;p&gt;I have to admit that this project can be further improved, I’ve met some problems but also find some solutions, with motivation I would spend time to complete my ToDo’s and find out more to be done.&lt;/p&gt;
+
+&lt;p&gt;The current implementation is slow on SDF generation, which is the very first task I would work with. It also have some problem with visual effects (sometimes), that the bounding box of the bunny may influence the ambient occlusion calculation, as you may see in the following picture, there’s a light square beneath the bunny, this happens when you adjust the step size of ambient occlusion, and I believe the core of this problem is the discontinuity of the global distance field, at the border of the bunny’s mesh box. I’ll look into this and alleviate the artefect.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/sdf/2019-06-29 14_36_14.bmp&quot; alt=&quot;2019-06-29 14:36:14&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;6-declaration&quot;&gt;6. Declaration&lt;/h2&gt;
+
+&lt;p&gt;I hereby declare that the documents and codes of this project are completed by my self, work that doesn’t belong to me are all noted in reference.&lt;/p&gt;
+
+&lt;h2 id=&quot;7-reference&quot;&gt;7. Reference&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Sramek, M. . (2006). 3d distance fields: a survey of techniques and applications. IEEE Transactions on Visualization &amp;amp; Computer Graphics, 12(4), 581-599.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.iquilezles.org/www/articles/distfunctions/distfunctions.htm&quot;&gt;Íñigo Quílez: Distance functions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.unrealengine.com/en-US/Engine/Rendering/LightingAndShadows/DistanceFieldAmbientOcclusion/index.html&quot;&gt;Unreal Engine 4: Distance Field Ambient Occlusion&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=oAS74MscuLY&amp;amp;list=PL3POsQzaCw53iK_EhOYR39h1J9Lvg-m-g&amp;amp;index=1&quot;&gt;Youtube: A ray marching shader tutorial&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://learnopengl.com/Model-Loading/Assimp&quot;&gt;LearnOpenGL.com: Assimp and basic mesh loading&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><category term="C++" /><category term="Computer Graphics" /><category term="SDF" /><category term="AO" /><summary type="html">Link to this project on Github This project works as the course outcome of DH2323 Project at KTH, Computer Graphics and Interaction, which is a C++ implementation of Ray-marched ambient occlusion rendered with Signed Distance Field. This article is basically a copy of the readme text of this project at its repository. 0. Logs Features Common mesh loading with ASSIMP Ray Marching with SDF SDF calculation of various constructive geometries SDF generation for arbitrary mesh (e.g. bunny.ply) Store and Load SDF texture data Scene combined with mesh and constructive geometries Shading, with soft shadows, ambient occlusion To-Do’s Camera: keyboard and mouse control SDF: per-mesh SDF generation in preprocessing SDF: texture caching and storing (compressing?) Landscape: represent global height field, and combine with SDF Shader: shading function, coloring, ambient occlusion File System: mesh name, I/O method, SDF importing (avoid to generate the same SDF each run, time consuming!) Mesh &amp;amp; SDF: mesh instancing, apply mesh transformations to SDF query SDF generation multi-tasking GPU: transport the project to GPU I. Environment / Requirements Platform: Ubuntu 16.04 LTS Processer: Intel Core i7-8700 Compiler: gcc(g++) 5.4.0 (should be fine with any recent versions) Programming language: C++ Tools and Third-party libraries cmake: sudo apt install cmake SDL: sudo apt install libsdl-dev ASSIMP: sudo apt install libassimp-dev libassimp-tuils II. How-to’s How to run? cd //path/to/Project/ Generate the project and run : cmake CMakeList.txt make ./Run In case you cannot generate the project with CMake, check if there exist CMakeCache.txt cache file in the folder, please remove it first: sudo rm CMakeCache.txt How to make full use? If you have the interest to read the codes or make modifications, please feel free and go ahead. And here are some tips before you start. For convenience, I define a file called debug.h in the Project/src/ folder, enclose you can find 4 macros #define DEBUG #define TIMING #define SCREENSHOT #define PREZ these are switches that control the functions of the program. DEBUG: output some useful information of current run in the console. TIMING: output frame render time in the console. SCREENSHOT: save the last frame before close into Project//images/sdf/ as a .bmp file PREZ: render additional geometries in the scene when TRUE, otherwise only render the bunny. Another file called “parameters.h” in the same folder, include all the parameters that use to control the scene, distance field, camera and light. Things are commented, and you could have a try to change some of them then check the outcome. Don’t forget to recompile every time you modify any file, simply enter make in the console.</summary></entry><entry><title type="html">A Weird Compiler and It’s Visualization</title><link href="http://localhost:4000/Weird-o-Compiler/" rel="alternate" type="text/html" title="A Weird Compiler and It's Visualization" /><published>2018-06-30T00:00:00+02:00</published><updated>2018-06-30T00:00:00+02:00</updated><id>http://localhost:4000/Weird-o-Compiler</id><content type="html" xml:base="http://localhost:4000/Weird-o-Compiler/">&lt;p&gt;&lt;img src=&quot;/images/woc/tree.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A &lt;a href=&quot;https://celphi-misc.github.io/woc-visualization/&quot;&gt;[Fast Access]&lt;/a&gt; to the visualization.&lt;/p&gt;
+
+&lt;p&gt;Weird-o-Compiler is the outcome of the course Compiler Theory which I took in my third year of bachelor’s education. The work is collaborated with Yehang Yin, a reliable and respectable friend of mine. We also take the Numerical Analysis course together.&lt;/p&gt;
+
+&lt;p&gt;Here’s another &lt;a href=&quot;https://github.com/celphi-misc/weird-o-compiler&quot;&gt;[LINK]&lt;/a&gt; to the source repository.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-woc-supports-and-what-not&quot;&gt;What WoC Supports and what not?&lt;/h2&gt;
+
+&lt;p&gt;WoC is a C-like and Javasricpt-like compiler with weird restrictions&lt;/p&gt;
+
+&lt;p&gt;Supports:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;functions, nested functions&lt;/li&gt;
+  &lt;li&gt;all loop kinds of C, break &amp;amp; continue&lt;/li&gt;
+  &lt;li&gt;branching (if &amp;amp; else)&lt;/li&gt;
+  &lt;li&gt;label and goto&lt;/li&gt;
+  &lt;li&gt;variable&lt;/li&gt;
+  &lt;li&gt;all logical and numerical operations of C&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Not supports:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;No MACRO&lt;/li&gt;
+  &lt;li&gt;No struct &amp;amp; union&lt;/li&gt;
+  &lt;li&gt;No pointers&lt;/li&gt;
+  &lt;li&gt;No dynamic strong types (but have built-in types)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;what-is-the-function-of-woc&quot;&gt;What is the function of WoC?&lt;/h2&gt;
+
+&lt;p&gt;You could imagine WoC as something like GCC (ROFL), it can&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Compile codes writen in WoC syntax, to intermediate representation / Assembly&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Help you locate errors in your WoC program&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Create a visualization of IR tree for your code&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;how-to-work-with-it&quot;&gt;How to work with it?&lt;/h2&gt;
+
+&lt;p&gt;To test and use this project, you should&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Build the project on your platform (Linux 64-bit suggested),&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Write a piece of code as if you are programming in C, but be careful with the rules&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Run the following command to &lt;strong&gt;Compile with WoC&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;woc [file] [options]
+Options:
+        -a      Generating AST in JSON
+        -i      Generating IR tree in JSON
+        -s      Generating symbol table for scopes in JSON
+        -c      Generating assemble code, in WOCASM 
+        -d      Debug mode, programmer should define usage in parse.y
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://www.shengbin.me/&quot;&gt;http://www.shengbin.me&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;what-did-we-use-to-create-woc&quot;&gt;What did we use to create WoC?&lt;/h2&gt;
 
-&lt;h3 id=&quot;强调&quot;&gt;强调&lt;/h3&gt;
+&lt;p&gt;The tools are introduced and learnt via the labs of this course, basically, &lt;strong&gt;Bison and YAML&lt;/strong&gt;. We design our tokens, and rules to interpret statements, then make use of these tools to complete the first several steps to build a compiler. As for the construction of IR tree, the re-coding to assembly, and the visualization of the tree, these are totally carried out on our own.&lt;/p&gt;
 
-&lt;p&gt;单个&lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;_&lt;/code&gt;产生斜体，两个（&lt;code class=&quot;highlighter-rouge&quot;&gt;**&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;__&lt;/code&gt;）则产生粗体。例如：&lt;/p&gt;
+&lt;h2 id=&quot;two-successful-and-one-unsuccessful-example&quot;&gt;Two successful and one unsuccessful example&lt;/h2&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;*like* _this_
+&lt;h3 id=&quot;example-1&quot;&gt;Example #1&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var __var = 3;
+var val = __var;
 
-**like** **this**
+function foo() {
+    var bar = val &amp;lt;&amp;lt; 2;
+    __var += val * bar &amp;gt; 0 ? __var : val &amp;gt;&amp;gt; __var;
+    return bar + __var;
+}
+
+function main(argc, argv)
+{
+    var a = &quot;hello world&quot;;
+    function hello(para1, para2) { return null; }
+    if(a == &quot;hello&quot;) {
+        for(var i = 0; i &amp;lt; 10; i++)
+        {
+            print(a);
+        }
+    } else if(a[0] == 'h')
+    {
+        print(a);
+    } else {
+        print(&quot;foo&quot;);
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;You could simply compile this piece of code with WoC, and check the outcomes either with our &lt;a href=&quot;https://celphi-misc.github.io/woc-visualization/&quot;&gt;visualization tool&lt;/a&gt;, or look into the output called xxx.wocasm. This example shows you that WoC shares basic syntax with C.&lt;/p&gt;
+
+&lt;h3 id=&quot;example-2&quot;&gt;Example #2&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function main(argc, argv) {
+    function max(a, b) {
+        return a &amp;gt; b ? a : b;
+    }
+    return max(1, max(2, 3));
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Nested functions, C no longer supports this feature, while you could still do this in WoC, as you declare a member function for a class, noted that the function can only be used within that scope.&lt;/p&gt;
+
+&lt;h3 id=&quot;error&quot;&gt;Error&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var __var = 3;
+var val = __var;
+
+function foo() {
+    var bar = val &amp;lt;&amp;lt; 2;
+    __var += val * bar &amp;gt; 0 ? __var : val &amp;gt;&amp;gt; __var // Semicolon 
+    return bar + __var;                           // missed
+}
+
+function main(argc, argv)
+{
+    var a = &quot;hello world&quot;;
+    else print(4); // Mismatched else statement
+    function hello(para1, para2) { return null; }
+    if(a == &quot;hello&quot;) {
+    for(var i = 0; i &amp;lt; 10; i++)
+    {
+        print(1 + 1 = 3); // Non-left-value
+    }
+    } else if(a[0] == 'h')
+    {
+        print(a);
+    } else {
+        print(&quot;foo&quot;) // Yet another semicolon missed
+    }
+    return 0;
+}
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This is similar to example 1, while it contains some mindless mistakes, WoC would help you locate them:&lt;/p&gt;
 
-&lt;p&gt;效果：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/woc/error.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;like&lt;/em&gt; &lt;em&gt;this&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&quot;visualization-tool&quot;&gt;Visualization Tool&lt;/h2&gt;
 
-&lt;p&gt;&lt;strong&gt;like&lt;/strong&gt; &lt;strong&gt;this&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&quot;https://celphi-misc.github.io/woc-visualization/&quot;&gt;Visualization Tool&lt;/a&gt;, introduced by Yehang, could display a tree structure, which is represented by a JSON file. So it actually not only works for our program, you could even use it to visualize tree structured somewhere else.&lt;/p&gt;
 
-&lt;h3 id=&quot;内嵌代码&quot;&gt;内嵌代码&lt;/h3&gt;
+&lt;p&gt;Where should the JSON file come from? Our WoC prepares this function to you, see in the options, with “-i” you would easily get it. And by clicking the red archieve button on the bottom-left corner, you could select which JSON file to load in.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;code: `echo hello`
+&lt;h3 id=&quot;side-notes&quot;&gt;Side Notes&lt;/h3&gt;
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;You might wonder where the name of this project comes from, actually, we just thought the syntax we designed is kind of weird, so we would like to name it Weird Compiler, however then we realize the abbreviation of it is not supposed to be WC anyway, so we add an emoji like “&lt;strong&gt;-o-&lt;/strong&gt;” between the words, which at the same time represents our emotions developing such a compiler, yarning in the midnights – it seems not a easy task to do with anyway. Then Eventually, the compiler is call WoC.&lt;/p&gt;
 
-&lt;p&gt;效果：&lt;/p&gt;
+&lt;p&gt;2018-06-30&lt;/p&gt;</content><author><name></name></author><category term="C" /><category term="Compiler" /><summary type="html">A [Fast Access] to the visualization. Weird-o-Compiler is the outcome of the course Compiler Theory which I took in my third year of bachelor’s education. The work is collaborated with Yehang Yin, a reliable and respectable friend of mine. We also take the Numerical Analysis course together. Here’s another [LINK] to the source repository. What WoC Supports and what not? WoC is a C-like and Javasricpt-like compiler with weird restrictions Supports: functions, nested functions all loop kinds of C, break &amp;amp; continue branching (if &amp;amp; else) label and goto variable all logical and numerical operations of C Not supports: No MACRO No struct &amp;amp; union No pointers No dynamic strong types (but have built-in types) What is the function of WoC? You could imagine WoC as something like GCC (ROFL), it can Compile codes writen in WoC syntax, to intermediate representation / Assembly Help you locate errors in your WoC program Create a visualization of IR tree for your code How to work with it? To test and use this project, you should Build the project on your platform (Linux 64-bit suggested), Write a piece of code as if you are programming in C, but be careful with the rules Run the following command to Compile with WoC woc [file] [options] Options: -a Generating AST in JSON -i Generating IR tree in JSON -s Generating symbol table for scopes in JSON -c Generating assemble code, in WOCASM -d Debug mode, programmer should define usage in parse.y What did we use to create WoC? The tools are introduced and learnt via the labs of this course, basically, Bison and YAML. We design our tokens, and rules to interpret statements, then make use of these tools to complete the first several steps to build a compiler. As for the construction of IR tree, the re-coding to assembly, and the visualization of the tree, these are totally carried out on our own. Two successful and one unsuccessful example Example #1 var __var = 3; var val = __var; function foo() { var bar = val &amp;lt;&amp;lt; 2; __var += val * bar &amp;gt; 0 ? __var : val &amp;gt;&amp;gt; __var; return bar + __var; } function main(argc, argv) { var a = &quot;hello world&quot;; function hello(para1, para2) { return null; } if(a == &quot;hello&quot;) { for(var i = 0; i &amp;lt; 10; i++) { print(a); } } else if(a[0] == 'h') { print(a); } else { print(&quot;foo&quot;); } return 0; } You could simply compile this piece of code with WoC, and check the outcomes either with our visualization tool, or look into the output called xxx.wocasm. This example shows you that WoC shares basic syntax with C. Example #2 function main(argc, argv) { function max(a, b) { return a &amp;gt; b ? a : b; } return max(1, max(2, 3)); } Nested functions, C no longer supports this feature, while you could still do this in WoC, as you declare a member function for a class, noted that the function can only be used within that scope. Error var __var = 3; var val = __var; function foo() { var bar = val &amp;lt;&amp;lt; 2; __var += val * bar &amp;gt; 0 ? __var : val &amp;gt;&amp;gt; __var // Semicolon return bar + __var; // missed } function main(argc, argv) { var a = &quot;hello world&quot;; else print(4); // Mismatched else statement function hello(para1, para2) { return null; } if(a == &quot;hello&quot;) { for(var i = 0; i &amp;lt; 10; i++) { print(1 + 1 = 3); // Non-left-value } } else if(a[0] == 'h') { print(a); } else { print(&quot;foo&quot;) // Yet another semicolon missed } return 0; } This is similar to example 1, while it contains some mindless mistakes, WoC would help you locate them: Visualization Tool The Visualization Tool, introduced by Yehang, could display a tree structure, which is represented by a JSON file. So it actually not only works for our program, you could even use it to visualize tree structured somewhere else. Where should the JSON file come from? Our WoC prepares this function to you, see in the options, with “-i” you would easily get it. And by clicking the red archieve button on the bottom-left corner, you could select which JSON file to load in. Side Notes You might wonder where the name of this project comes from, actually, we just thought the syntax we designed is kind of weird, so we would like to name it Weird Compiler, however then we realize the abbreviation of it is not supposed to be WC anyway, so we add an emoji like “-o-” between the words, which at the same time represents our emotions developing such a compiler, yarning in the midnights – it seems not a easy task to do with anyway. Then Eventually, the compiler is call WoC. 2018-06-30</summary></entry><entry><title type="html">ISORunner - A Try of Unity</title><link href="http://localhost:4000/First-Try-On-Unity-ISORunner/" rel="alternate" type="text/html" title="ISORunner - A Try of Unity" /><published>2017-12-17T00:00:00+01:00</published><updated>2017-12-17T00:00:00+01:00</updated><id>http://localhost:4000/First-Try-On-Unity-ISORunner</id><content type="html" xml:base="http://localhost:4000/First-Try-On-Unity-ISORunner/">&lt;p&gt;&lt;img src=&quot;/images/isorunner/start.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;code: &lt;code class=&quot;highlighter-rouge&quot;&gt;echo hello&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://drive.google.com/open?id=1WspZE7MGQffC2-u6AbFyx2m7B0xhYcXw&quot;&gt;[LINK]&lt;/a&gt; to the game installer on Android.&lt;/p&gt;
 
-&lt;h3 id=&quot;图片&quot;&gt;图片&lt;/h3&gt;
+&lt;p&gt;This project is a Unity-based game application which was finally deployed on Android smartphones, it is also my first try of using Unity.&lt;/p&gt;
 
-&lt;p&gt;图片与链接类似，只需在文本前面加上感叹号&lt;code class=&quot;highlighter-rouge&quot;&gt;!&lt;/code&gt;即可。图片位置和大小无法通过Markdown来指定。&lt;/p&gt;
+&lt;p&gt;I’m also glad to introduce that the project is completed by me and my kind teammates, Linghao CHEN and Yuxin LIAO, who always accompanied me through my bachelor’s education.&lt;/p&gt;
 
-&lt;h3 id=&quot;转义字符&quot;&gt;转义字符&lt;/h3&gt;
+&lt;p&gt;The game is called &lt;strong&gt;ISORunner&lt;/strong&gt;, name given by Linghao; he explains that “ISO” is a diminutive used in basketball denoting a 1v1 or 1 vs N game, so we just call this one ISO-Runner, as it is a single-player, and the mode of games matches exactly to the definition of ISO.&lt;/p&gt;
 
-&lt;p&gt;以下特殊字符需要用&lt;code class=&quot;highlighter-rouge&quot;&gt;\&lt;/code&gt;转义得到。&lt;/p&gt;
+&lt;p&gt;ISORunner includes two game modes, one is a running game, in which you should control the boy to run though all the obstacles. The other modes is like the Game of Bombs, that you should drop bombs on tiles, and eliminate waves of enemies.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;\   backslash
-`   backtick
-*   asterisk
-_   underscore
-{}  curly braces
-[]  square brackets
-()  parentheses
-#   hash mark
-+   plus sign
--   minus sign (hyphen)
-.   dot
-!   exclamation mark
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="sample" /><category term="markdown" /><summary type="html">本中文版Markdown语法简介来自博客 https://blog.shengbin.me/posts/markdown-syntax Markdown语法的完整介绍在这里：http://daringfireball.net/projects/markdown/syntax。下面整理的这些为了方便写博客时参考。 分段与分行 以一个或多个空行来隔开段落；以两个或多个空格来段内换行。 标题 ``` This is an H1 ============= This is an H2</summary></entry></feed>
+&lt;p&gt;If you are reading this and don’t want to be bored by the upcoming long description of our project work, I would suggest you to directly try the game instead, &lt;a href=&quot;https://drive.google.com/open?id=1WspZE7MGQffC2-u6AbFyx2m7B0xhYcXw&quot;&gt;using the link to the installer of game on Android.&lt;/a&gt; To successfully run the game, we suggest you to have:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Android smartphone with &lt;strong&gt;Minimum Version Android4.4&lt;/strong&gt; supported.&lt;/li&gt;
+  &lt;li&gt;At lease &lt;strong&gt;1GB&lt;/strong&gt; RAM&lt;/li&gt;
+  &lt;li&gt;Screen aspect ratio &lt;strong&gt;16:9&lt;/strong&gt; for best gameplay experience.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Noted that we no longer maintain or update this game, since we completed this project long time ago and now we are graduated. If you would like to report a bug or see the source of this game, please feel free to &lt;a href=&quot;mailto:zhy@kth.se&quot;&gt;contact me&lt;/a&gt;, and I’ll reply as soon as possible.&lt;/p&gt;
+
+&lt;h2 id=&quot;previews-of-the-game&quot;&gt;Previews of the game&lt;/h2&gt;
+
+&lt;h3 id=&quot;game-mode-running-game&quot;&gt;Game Mode: Running Game&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/images/isorunner/preview-1.png&quot; alt=&quot;img&quot; /&gt;
+To make the game more fun to play, we introduced various obstacles and bonus elements, the player is not only controlled by moving and jumping, but also have to surmount different obstructions by doing specific operations. You might see that sometimes you have to wait for a while to get over the roadblock,&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/isorunner/preview-4.jpg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And sometimes the road is invisible, and don’t worry, we provide you with a functions to through stones to check a solid path, if the stone hits the ground you could hear a sound (which is recorded in reality where a stone drops), then by steping on the right tile you could see the update in the minimap on the top-right corner, which means you gradually find your way.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/isorunner/preview-3.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We also create chances for you to collect bonus and improve your score. By collecting coins like a Super Mario you would hit higher place on the Rankings board, in case you would like to challenge your friend and see who could achieve a higher score.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/isorunner/preview-2.jpg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And there is actually a place where you could check your previous scores, both available in running mode and the battle mode.
+&lt;img src=&quot;/images/isorunner/preview-5.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;game-mode-bombs-game&quot;&gt;Game mode: Bombs Game&lt;/h3&gt;
+
+&lt;p&gt;In battle mode you play mainly with bombs, draw damage to enemies and see how many waves of enemies you could finally defeat. At the beginning you could drop one bomb at a time, but no worries, you would have ways to level yourself up – by runes! There are totally five kind of runes which would periodically exist at a random position in the map, go collect it, and you would be empowered.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/isorunner/preview-7.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;By collecting the runes, you could become faster, stronger(knock enemies out of map), or remove the limitation of number of bombs in a short time, whatever, you would get to know the benefits any rune could give you when you take it. Also, you might get tired of the small bombs sometime, so we give you a chance to use a huge powerful bomb everytime you get another kilo scores.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/isorunner/preview-6.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;There are actuall more content that we could cover here to should you how the game runs, while we still insist you to have a try if possible.&lt;/p&gt;
+
+&lt;h2 id=&quot;challenges&quot;&gt;Challenges&lt;/h2&gt;
+
+&lt;p&gt;All that introduced above pertains to the our gameplay designing task, while it is just one of the many task that we have experienced from developing a game. Besides gameplay, we get to know about &lt;strong&gt;art design, scene management, game logic, soundtrack handling, database management&lt;/strong&gt; and a lot more.&lt;/p&gt;
+
+&lt;p&gt;As you see that, many of the textures used in the game are made by ourselves, moreover, the switching among menu and scenes, the animation state machine that handles the static-running-jumping state of a character, and the read and load of a permenant database which stores the scores – We would say that we learn much from these, and the experience really helps me spot some blind point which I didn’t realize for developing a game.&lt;/p&gt;
+
+&lt;p&gt;2017-12-17&lt;/p&gt;</content><author><name></name></author><category term="Unity" /><category term="Android" /><category term="Game" /><summary type="html">[LINK] to the game installer on Android. This project is a Unity-based game application which was finally deployed on Android smartphones, it is also my first try of using Unity. I’m also glad to introduce that the project is completed by me and my kind teammates, Linghao CHEN and Yuxin LIAO, who always accompanied me through my bachelor’s education. The game is called ISORunner, name given by Linghao; he explains that “ISO” is a diminutive used in basketball denoting a 1v1 or 1 vs N game, so we just call this one ISO-Runner, as it is a single-player, and the mode of games matches exactly to the definition of ISO. ISORunner includes two game modes, one is a running game, in which you should control the boy to run though all the obstacles. The other modes is like the Game of Bombs, that you should drop bombs on tiles, and eliminate waves of enemies. If you are reading this and don’t want to be bored by the upcoming long description of our project work, I would suggest you to directly try the game instead, using the link to the installer of game on Android. To successfully run the game, we suggest you to have: Android smartphone with Minimum Version Android4.4 supported. At lease 1GB RAM Screen aspect ratio 16:9 for best gameplay experience. Noted that we no longer maintain or update this game, since we completed this project long time ago and now we are graduated. If you would like to report a bug or see the source of this game, please feel free to contact me, and I’ll reply as soon as possible. Previews of the game Game Mode: Running Game To make the game more fun to play, we introduced various obstacles and bonus elements, the player is not only controlled by moving and jumping, but also have to surmount different obstructions by doing specific operations. You might see that sometimes you have to wait for a while to get over the roadblock, And sometimes the road is invisible, and don’t worry, we provide you with a functions to through stones to check a solid path, if the stone hits the ground you could hear a sound (which is recorded in reality where a stone drops), then by steping on the right tile you could see the update in the minimap on the top-right corner, which means you gradually find your way. We also create chances for you to collect bonus and improve your score. By collecting coins like a Super Mario you would hit higher place on the Rankings board, in case you would like to challenge your friend and see who could achieve a higher score. And there is actually a place where you could check your previous scores, both available in running mode and the battle mode. Game mode: Bombs Game In battle mode you play mainly with bombs, draw damage to enemies and see how many waves of enemies you could finally defeat. At the beginning you could drop one bomb at a time, but no worries, you would have ways to level yourself up – by runes! There are totally five kind of runes which would periodically exist at a random position in the map, go collect it, and you would be empowered. By collecting the runes, you could become faster, stronger(knock enemies out of map), or remove the limitation of number of bombs in a short time, whatever, you would get to know the benefits any rune could give you when you take it. Also, you might get tired of the small bombs sometime, so we give you a chance to use a huge powerful bomb everytime you get another kilo scores. There are actuall more content that we could cover here to should you how the game runs, while we still insist you to have a try if possible. Challenges All that introduced above pertains to the our gameplay designing task, while it is just one of the many task that we have experienced from developing a game. Besides gameplay, we get to know about art design, scene management, game logic, soundtrack handling, database management and a lot more. As you see that, many of the textures used in the game are made by ourselves, moreover, the switching among menu and scenes, the animation state machine that handles the static-running-jumping state of a character, and the read and load of a permenant database which stores the scores – We would say that we learn much from these, and the experience really helps me spot some blind point which I didn’t realize for developing a game. 2017-12-17</summary></entry></feed>

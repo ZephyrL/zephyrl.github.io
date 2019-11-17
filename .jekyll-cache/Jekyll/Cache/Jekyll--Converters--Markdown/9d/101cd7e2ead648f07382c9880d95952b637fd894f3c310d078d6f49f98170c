@@ -1,0 +1,23 @@
+I".<p><img src="/images/isorunner/start.png" alt="img" /></p>
+
+<p>This project is a Unity-based game application which was finally deployed on Android smartphones, it is also my first try of using Unity.</p>
+
+<p>I’m also glad to introduce that the project is completed by me and my kind teammates, Linghao CHEN and Yuxin LIAO, who always accompanied me through my bachelor’s education.</p>
+
+<p>The game is called <em>ISORunner</em>, name given by Linghao; he explains that “ISO” is a diminutive used in basketball denoting a 1v1 or 1 vs N game, so we just call this one ISO-Runner, as it is a single-player, and the mode of games matches exactly to the definition of ISO.</p>
+
+<p>ISORunner includes two game modes, one is a parkour game, in which you should control the boy to run though all the obstacles. The other modes is like the Game of Bombs, that you should drop bombs on tiles, and eliminate waves of enemies.</p>
+
+<p>If you are reading this and don’t want to be bored by the upcoming long description of our project work, I would suggest you to directly try the game instead, <a href="https://drive.google.com/open?id=1WspZE7MGQffC2-u6AbFyx2m7B0xhYcXw">using the link to the installer of game on Android.</a> To successfully run the game, we suggest you to have:</p>
+
+<ul>
+  <li>Android smartphone with <strong>Minimum Version Android4.4</strong> supported.</li>
+  <li>At lease 1GB RAM</li>
+  <li>Screen aspect ratio 16:9 for best gameplay experience.</li>
+</ul>
+
+<p>Noted that we no longer maintain or update this game, since we completed this project long time ago and now we are graduated. If you would like to report a bug or see the source of this game, please feel free to <a href="mailto:zhy@kth.se">contact me</a>, and I’ll reply as soon as possible.</p>
+
+<h2 id="preview-of-the-game">Preview of the game</h2>
+
+:ET

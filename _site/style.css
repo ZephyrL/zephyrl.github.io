@@ -76,6 +76,10 @@ body {
   width: 100%;
 }
 
+.post img {
+  width: 250px;
+}
+
 h1, h2, h3, h4, h5, h6 {
   line-height: 2em;
   margin: 1em 0 16px;
@@ -341,7 +345,7 @@ img {
   width: 30%;
   -webkit-background-size: cover;
   background-size: cover;
-  background-color: #f8f9fa;
+  background-color: #f3f0ff;
   height: 100%;
   top: 0;
   left: 0;
@@ -651,7 +655,7 @@ nav a {
 .wrapper-footer-desktop {
   margin-top: 50px;
   border-top: 1px solid #e9ecef;
-  background-color: #f8f9fa;
+  background-color: #edf2ff;
   position: absolute;
   clear: both;
   width: 100%;
@@ -673,7 +677,7 @@ nav a {
     display: block;
     width: 100%;
     border-top: 1px solid #e9ecef;
-    background-color: #f8f9fa;
+    background-color: #edf2ff;
   }
 }
 

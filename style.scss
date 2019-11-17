@@ -32,6 +32,10 @@ body {
   width: 100%;
 }
 
+.post img {
+  width: 250px;
+}
+
 h1, h2, h3, h4, h5, h6 {
   line-height: 2em;
   margin: 1em 0 16px;
@@ -316,7 +320,7 @@ img {
   width: 30%;
 	-webkit-background-size: cover;
 	background-size: cover;
-	background-color: $oc-gray-0;
+	background-color: $oc-violet-0;
 	height: 100%;
 	top: 0;
 	left:0;
@@ -619,7 +623,7 @@ nav {
 .wrapper-footer-desktop {
   margin-top: 50px;
   border-top: 1px solid $footer-border-color;
-  background-color: $footer-background-color;
+  background-color: $oc-indigo-0;
   position: absolute;
   clear:both;
   width:100%;
@@ -638,7 +642,7 @@ nav {
     display: block;
     width: 100%;
     border-top: 1px solid $footer-border-color;
-    background-color: $footer-background-color;
+    background-color: $oc-indigo-0;
   }
 }
 
