@@ -1,0 +1,46 @@
+I"*<p>Here you see some ongoing projects, which I’m currently working on, and each of them is also going to be posted in this blog as articles soon.</p>
+
+<p>If you would like to know more about these projects, also feel free to <a href="mailto:zhy@kth.se">[contact me]</a> and ask about more.</p>
+
+<h2 id="dynamic-line-placement-for-continuous-exploration">Dynamic Line Placement for Continuous exploration</h2>
+
+<p><strong>Tags: C++, Visualization</strong></p>
+
+<p><img src="/images/ongoing/dlp.png" alt="dlp" /></p>
+
+<p>This project is supervised by Dr. Tobias Guenther and Irene Baeza Rojo.</p>
+
+<h3 id="description">Description</h3>
+<p>Scientific visualization became a vital ingredient in many scientific disciplines. Prominent examples are medical data, meteorology and engineering problems. Due to the ever-growing computational power, numerical simulations become larger and therefore more complex. In the analysis of three-dimensional flow data, we often experience occlusion problems, when
+irrelevant parts of the scene occlude the important aspects (aneurysm, tumor, etc.). This is especially severe in dense fluid flows, where streamlines are placed to represent the invisible fluid. Current visibility optimization methods select streamline geometry from a pre-computed set of candidates, which is not extended when the user moves closer to the data. In this project, we dynamically create representative geometry and automatically adjust their transparency based on a given importance measure.</p>
+
+<h3 id="tasks">Tasks</h3>
+<p>We begin with an asynchronous CPU implementation of the Jobard-Lefer algorithm in 3D, which results in evenly-spaced line geometry that is subdivided into segments. Given a scalar importance measure, we sample the importance onto the lines and visualize the geometry in a provided opacity optimization framework. We aim for the following properties:</p>
+
+<ul>
+  <li>Adaptive line density which is controlled by a view-dependent scalar field</li>
+  <li>Smooth and frame coherent transitions of opacity during camera movement</li>
+  <li>Real-time performance during interactive navigation</li>
+  <li>A user-interface that allows users to select importance measures</li>
+</ul>
+
+<p>The computation of streamlines with adaptive density requires a number of acceleration data structures. For instance, efficient neighborhood queries are implemented with kd-trees, and in order to continue or terminate line integration at view frustum boundaries lines have an active front and end. One of the following directions can be explored deeper:</p>
+<ol>
+  <li>To speed up the integration, the line discretization or integration step size can be adjusted for objects farther away from the camera.</li>
+  <li>To reduce the memory IO cost during sampling, a level-of-detail pyramid of the vector field can be computed to trace lines with less accuracy far away from the camera.</li>
+  <li>A user interface can allow users to place regions of interest, paint the importance on lines or advect importance from seed sources.
+A general challenge for all the above methods is a temporally-coherent transition between levels of details, variations in the integration accuracy or changes in the importance. The algorithm is tested in numerical fluid simulations in small and large domains.</li>
+</ol>
+
+<h2 id="assisting-surgery-with-mixed-reality-devices">Assisting Surgery with Mixed Reality Devices</h2>
+
+<p>The goal of the project is to assist surgeons during complex fracture surgeries by showing scanned data of patients, as well as 3D models of bone fragments. With the help of HoloLens 2 surgeons will be able to use mixed reality during surgeries of complex fractures.</p>
+
+<p>In critical cases bones can be fractured into many separate pieces that need to be realigned and fixed with supportive structure. The position and orientation of bone structures is usually not well visible during the surgery and surgeons have to remember their position from the scan inspection prior to the surgery.</p>
+
+<p>The major task is hence to allow surgeons to reinspect the scan data during the surgery and better understand individual bone positions as needed.</p>
+
+<p><img src="/images/ongoing/mr.png" alt="mr" />
+Here is a <a href="https://drive.google.com/file/d/1srVZiZuzCjAKpWUOb9-4-FSnOf7tGykd/view?usp=sharing">[Link]</a> to the video as a demo for current functions.</p>
+
+:ET

@@ -14,4 +14,4 @@ If you come here through the link shared by me, I guess you are probably looking
 
 If you drop in here by accident, you are also very welcome, feel free to check any blogs or articles that may interest you.
 
-For cooperation or questions, please contact zhy@kth.se, I would reply as soon as possible.
+For cooperation or questions, please [[contact me]](mailto:zhy@kth.se), I would reply as soon as possible.
