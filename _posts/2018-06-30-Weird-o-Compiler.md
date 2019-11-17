@@ -10,7 +10,7 @@ comments: true
 
 ![img](/images/woc/tree.png)
 
-A [[Fast Access]](https://celphi-misc.github.io/woc-visualization/) to the visualization.
+[[Fast Access]](https://celphi-misc.github.io/woc-visualization/) to the visualization.
 
 Weird-o-Compiler is the outcome of the course Compiler Theory which I took in my third year of bachelor's education. The work is collaborated with Yehang Yin, a reliable and respectable friend of mine. We also take the Numerical Analysis course together.
 
@@ -71,7 +71,7 @@ The tools are introduced and learnt via the labs of this course, basically, **Bi
 ## Two successful and one unsuccessful example
 
 ### Example #1
-```
+```c
 var __var = 3;
 var val = __var;
 
@@ -102,7 +102,7 @@ function main(argc, argv)
 You could simply compile this piece of code with WoC, and check the outcomes either with our [visualization tool](https://celphi-misc.github.io/woc-visualization/), or look into the output called xxx.wocasm. This example shows you that WoC shares basic syntax with C.
 
 ### Example #2 
-```
+```c
 function main(argc, argv) {
     function max(a, b) {
         return a > b ? a : b;
@@ -113,7 +113,7 @@ function main(argc, argv) {
 Nested functions, C no longer supports this feature, while you could still do this in WoC, as you declare a member function for a class, noted that the function can only be used within that scope.
 
 ### Error
-```
+```c
 var __var = 3;
 var val = __var;
 

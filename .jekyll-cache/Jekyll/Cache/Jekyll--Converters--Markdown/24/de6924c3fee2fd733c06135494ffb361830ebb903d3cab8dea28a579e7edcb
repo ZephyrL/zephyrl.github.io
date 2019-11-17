@@ -1,0 +1,317 @@
+I"Jl<p><a href="https://github.com/ZephyrL/DH2323Project">Link to this project</a> on Github</p>
+
+<p><img src="/images/sdf/2019-07-02 10_39_05.bmp" alt="2019-07-02 10_39_05" /></p>
+
+<p>This project works as the outcome of Course DH2323 at KTH, Computer Graphics and Interaction. The project is a C++ implementation of <strong>Ray-marched ambient occlusion</strong> rendered with <strong>Signed Distance Field</strong>. This article is basically a copy of the readme text of this project at its repository.</p>
+
+<h2 id="0-logs">0. Logs</h2>
+
+<h4 id="features">Features</h4>
+
+<ul>
+  <li>Common mesh loading with <em>ASSIMP</em></li>
+  <li>Ray Marching with SDF</li>
+  <li>SDF calculation of various constructive geometries</li>
+  <li>SDF generation for arbitrary mesh (e.g. bunny.ply)</li>
+  <li>Store and Load SDF texture data</li>
+  <li>Scene combined with mesh and constructive geometries</li>
+  <li>Shading, with soft shadows, ambient occlusion</li>
+</ul>
+
+<h4 id="to-dos">To-Do’s</h4>
+
+<ul>
+  <li>Camera: <del>keyboard</del> and mouse control</li>
+  <li><del>SDF: per-mesh SDF generation in preprocessing</del></li>
+  <li><del>SDF: texture caching and storing (compressing?)</del></li>
+  <li>Landscape: represent global height field, and combine with SDF</li>
+  <li><del>Shader: shading function, coloring, ambient occlusion</del></li>
+  <li><del>File System: mesh name, I/O method, SDF importing (avoid to generate the same SDF each run, time consuming!)</del></li>
+  <li>Mesh &amp; SDF: mesh instancing, apply mesh transformations to SDF query</li>
+  <li>SDF generation multi-tasking</li>
+  <li>GPU: transport the project to GPU</li>
+</ul>
+
+<h2 id="i-environment--requirements">I. Environment / Requirements</h2>
+
+<ul>
+  <li>Platform: Ubuntu 16.04 LTS</li>
+  <li>Processer: Intel Core i7-8700</li>
+  <li>Compiler: gcc(g++) 5.4.0 (should be fine with any recent versions)</li>
+  <li>Programming language: C++</li>
+</ul>
+
+<h4 id="tools-and-third-party-libraries">Tools and Third-party libraries</h4>
+
+<p>cmake:</p>
+
+<p><code class="highlighter-rouge">sudo apt install cmake</code></p>
+
+<p>SDL:</p>
+
+<p><code class="highlighter-rouge">sudo apt install libsdl-dev</code></p>
+
+<p>ASSIMP:</p>
+
+<p><code class="highlighter-rouge">sudo apt install libassimp-dev libassimp-tuils</code></p>
+
+<h2 id="ii-how-tos">II. How-to’s</h2>
+
+<h4 id="how-to-run">How to run?</h4>
+
+<p><code class="highlighter-rouge">cd //path/to/Project/</code></p>
+
+<p>Generate the project and run :</p>
+
+<ol>
+  <li><code class="highlighter-rouge">cmake CMakeList.txt</code></li>
+  <li><code class="highlighter-rouge">make</code></li>
+  <li><code class="highlighter-rouge">./Run</code></li>
+</ol>
+
+<p>In case you cannot generate the project with CMake, check if there exist <strong>CMakeCache.txt</strong> cache file in the folder, please remove it first:</p>
+
+<p><code class="highlighter-rouge">sudo rm CMakeCache.txt</code></p>
+
+<h4 id="how-to-make-full-use">How to make full use?</h4>
+
+<p>If you have the interest to read the codes or make modifications, please feel free and go ahead. And here are some tips before you start.</p>
+
+<p>For convenience, I define a file called <strong>debug.h</strong> in the <strong>Project/src/</strong> folder, enclose you can find 4 macros</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define DEBUG
+#define TIMING
+#define SCREENSHOT
+#define PREZ
+</span></code></pre></div></div>
+
+<p>these are switches that control the functions of the program.</p>
+
+<ul>
+  <li>DEBUG: output some useful information of current run in the console.</li>
+  <li>TIMING: output frame render time in the console.</li>
+  <li>SCREENSHOT: save the last frame before close into <strong>Project//images/sdf/</strong> as a .bmp file</li>
+  <li>PREZ: render additional geometries in the scene when TRUE, otherwise only render the bunny.</li>
+</ul>
+
+<p>Another file called “parameters.h” in the same folder, include all the parameters that use to control the scene, distance field, camera and light. Things are commented, and you could have a try to change some of them then check the outcome.</p>
+
+<p>Don’t forget to recompile every time you modify any file, simply enter <code class="highlighter-rouge">make</code> in the console.</p>
+
+<hr />
+
+<h2 id="1-introduction">1. Introduction</h2>
+
+<p><strong>Signed Distance Field</strong> (SDF) is a variation of distance field, which in a 3D(2D) space maps a <em>position</em> to its distance to the <em>nearest</em> plane (edge). Distance field has been applied in many studies, such as image processing, physics, and computer graphics. In the context of computer graphics, distance fields are usually signed, aka. signed distance field, to indicate whether certain position is inside a mesh or not.</p>
+
+<p>In computer graphics and game development, SDF shows great versatility, it can be used for collision test, mesh representation, ray tracing, etc. Besides, people find that it comes along with some bonus when the scene is rendered with ray-tracing (namely, ray-marching) algorithms – shadow effects like <strong>soft shadows</strong> and <strong>ambient occlusion</strong> can be produced with almost no extra cost.</p>
+
+<p>This project is about a start-from-scratch C++ implementation of a <strong>real-time ray marching renderer</strong>, which includes a baking tool of SDF texture and produces soft shadow effects. During the implementation we make use of some existing tools: ASSIMP for mesh importing and  for screen presentation. All references will be listed at the end of this document.</p>
+
+<h2 id="2-cornerstones">2. Cornerstones</h2>
+
+<h4 id="21-camera-and-screen-set-up">2.1 Camera and screen set-up</h4>
+
+<p>The camera working for ray tracing is different from ones working for conventional pipeline; Instead of converting everything to the camera’s view space, ray tracing camera shots rays into the scene, so that the rays should be transformed from screen space to world space.</p>
+
+<p>As the final deliverable was expected to be a navigator where you can check the objects from any direction, we preserve the idea to rotate the camera  around the origin, and define the <code class="highlighter-rouge">Camera</code> class in a LookAt() style. Besides, it contains necessary members such as screen configurations and view frustum to generate rays correctly. The definition of the class is shown in the snippet below.</p>
+
+<p><img src="/images/sdf/Code-camera.png" alt="Code-camera" /></p>
+
+<p><code class="highlighter-rouge">CameraController</code> is the class to move the camera around, it is implemented with keyboard listeners; while it could be more complete by adding mouse listeners, which is not yet implemented.</p>
+
+<p><img src="/images/sdf/Code-cameracontrol.png" alt="Code-cameracontrol" /></p>
+
+<p>To set pixels according to a frame rendered we furthermore introduce the <code class="highlighter-rouge">Screen</code> class, which is a common pack-up of the SDL functions, since they’re provided in the labs, we won’t talk much about it.</p>
+
+<h4 id="22-scene-model-and-mesh-loading">2.2 Scene, model and mesh loading</h4>
+
+<p>We use ASSIMP to help load various format of mesh files, and define a <code class="highlighter-rouge">Mesh</code> class to as the basic integrated unit of scene representation. The scratch of this class refer to the mesh class provided by https://learnopengl.com/, while in practice the codes are highly adapt to the use of this project.</p>
+
+<p><img src="/images/sdf/Code-mesh.png" alt="Code-mesh" /></p>
+
+<p>The buffer handle used for OpenGL is removed, we keep the mesh and include bounding box, transform and distance field data of the mesh. Additionally, we give name to meshes, in order to enable saving/loading distance field data afterwards.</p>
+
+<p><code class="highlighter-rouge">Mesh</code> is contained within a <code class="highlighter-rouge">Model</code>, and models are contained by <code class="highlighter-rouge">Scene</code>, we keep this level structure to make sure the codes are prepared for extension, since at present we only use a bunny mesh in this project.</p>
+
+<h2 id="3-core-functions">3. Core Functions</h2>
+
+<h4 id="31-sdf-generation">3.1 SDF generation</h4>
+
+<p>When a mesh is constructing, the program would automatically create the distance field data for it. If you have read about distance field, you may know something called <a href="http://www.iquilezles.org/www/articles/distfunctions/distfunctions.htm">analytical distance functions</a>, which calculate the exact distance from any position to certain geometry shapes, like a box or a cylinder. However, the distance field of arbitrary mesh is not as simple as those geometries, and approaches which decompose meshes into constructive geometries seem not practical. In this project, the solution is sampling, which is to do brute-force ray tracing at a number of sample points and record the minimum distance.</p>
+
+<p>In other words the local space of the mesh is <em>voxelized</em>, to calculate how many voxels we use to represent the distance field, we set a default <code class="highlighter-rouge">DF_MIN_NUM_VOXEL_PER_DIM=8</code> which means there are at least 8 voxels on the shortest axis of the local bounding box, then we keep a variable <code class="highlighter-rouge">resolution</code> to control the actual amount of voxels, the higher this value, the more voxels created.</p>
+
+<p>The bunny mesh has some holes hence is not completely closed, so we applied a method to distinguish inside sample points, the basic idea is to keep a counter indicates the number of rays hit on back faces, if the counter exceeds a certain number (proportion), the sample point should be inside of the mesh.</p>
+
+<p>For readability here put the pseudo-code written in Python, as follows,</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># DF bbox should be slightly larger
+</span><span class="n">BBox</span> <span class="o">=</span> <span class="n">CalculateDistanceFieldBBox</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">bbox</span><span class="p">)</span>
+<span class="c1"># Calculate Volume grid dimensions according to bbox and resolution
+</span><span class="n">VolumeDimension</span> <span class="o">=</span> <span class="n">CalculateVoxelDimension</span><span class="p">(</span><span class="n">BBox</span><span class="p">,</span> <span class="n">resolution</span><span class="p">)</span>
+<span class="c1"># Generate sample ray direction
+</span><span class="n">SampleDirections</span> <span class="o">=</span> <span class="n">GenerateSampleRayDirections</span><span class="p">(</span><span class="mi">1200</span><span class="p">)</span>
+
+<span class="c1"># for each sample location, do brute-force ray tracing
+</span><span class="k">for</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Z</span><span class="p">)</span> <span class="ow">in</span> <span class="n">VolumeDimension</span><span class="o">.</span><span class="n">XYZ</span><span class="p">:</span>
+    <span class="n">minDistance</span> <span class="o">=</span> <span class="n">VolumeMaxDistance</span>
+	<span class="k">for</span> <span class="n">sampleDir</span> <span class="ow">in</span> <span class="n">SampleDirections</span><span class="p">:</span>
+        <span class="c1"># calculate ray(pos, dir)
+</span>        <span class="n">ray</span> <span class="o">=</span> <span class="p">(</span><span class="n">LocalSpace</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Z</span><span class="p">),</span> <span class="n">sampleDir</span><span class="p">)</span>
+        <span class="c1"># ray-mesh intersection
+</span>        <span class="p">(</span><span class="n">boolHit</span><span class="p">,</span> <span class="n">curDistance</span><span class="p">,</span> <span class="n">hitNormal</span><span class="p">)</span> <span class="o">=</span> <span class="n">Intersect</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">ray</span><span class="p">)</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">boolHit</span><span class="p">):</span>
+            <span class="n">hit</span><span class="o">++</span>
+            <span class="c1"># bac kface counter
+</span>            <span class="k">if</span><span class="p">(</span> <span class="n">dot</span><span class="p">(</span><span class="n">sampleDir</span><span class="p">,</span> <span class="n">hitNormal</span><span class="p">)):</span>
+                <span class="n">hitBack</span><span class="o">++</span>
+			<span class="n">minDistance</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">minDistance</span><span class="p">,</span> <span class="n">curDistance</span><span class="p">)</span>
+            
+	<span class="c1"># ! the position is inside if &gt;50% rays hit back face
+</span>    <span class="k">if</span> <span class="p">(</span><span class="n">hitBack</span> <span class="o">&gt;</span> <span class="n">SampleDirections</span><span class="o">.</span><span class="n">num</span> <span class="o">*</span> <span class="mf">0.5</span><span class="n">f</span><span class="p">):</span>
+        <span class="n">minDistance</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+	<span class="c1"># ! for meshes that is not entirely close, 
+</span>    <span class="c1"># ! this is the smooth operation on the border of in-outside. 
+</span>	<span class="k">if</span> <span class="p">(</span><span class="n">minDistance</span> <span class="o">&lt;</span> <span class="n">voxelSize</span> <span class="o">&amp;&amp;</span> <span class="n">hitBack</span> <span class="o">&gt;</span> <span class="mf">0.95</span> <span class="o">*</span> <span class="n">hit</span><span class="p">):</span>
+        <span class="n">minDistance</span> <span class="o">=</span> <span class="o">-</span> <span class="nb">abs</span><span class="p">(</span><span class="n">minDistance</span><span class="p">)</span>
+        
+    <span class="n">OutData</span><span class="p">[</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Z</span><span class="p">]</span> <span class="o">=</span> <span class="n">minDistance</span>
+</code></pre></div></div>
+
+<h5 id="complexity-problem">complexity problem</h5>
+
+<p>The generation of distance field works fine when we set <code class="highlighter-rouge">resolution = 1.0f</code>, that is to use 8 voxels on the shortest axis, it applies to the bunny, creating a 10x10x8 grid, and within each grid cell there runs 1200 brute-force ray tracing; as we use the zipped bunny mesh which has 4k triangles, the calculation of distance field takes about half a minute.</p>
+
+<p>Things get tough when higher resolution of distance field is required, since we are using CPU processors the task is completely in a sequential style, it takes hours to calculate a distance field of 41x40x32 grid cells. To alleviate such problem we promote three possible solution, the (1) first one is to transport the calculation to GPU, which would largely reduce the running time; the (2) second is to enable multi-tasking on CPU, a way that is used by the Unreal Engine 4 for distance field generation; the (3) third is to try another method to calculate the shortest distance, i.e. the point-and-triangle-feature algorithm proposed in “Real-time Collision Detection” by Christer Ericson, we didn’t choose this method because it has limitations when the mesh is not closed, besides it’s less intuitive than ray tracing. The project is still growing and it may introduce the first or second solution later.</p>
+
+<h4 id="32-ray-marching-algorithm-and-sdf">3.2 Ray-marching algorithm and SDF</h4>
+
+<p>Ray marching algorithm is a variation of ray tracing, and the thing we describe here is also known as “<strong>Sphere tracing</strong>”. Sphere tracing algorithm should come with an exact or approximate SDF function <code class="highlighter-rouge">SDF(position)</code> which describes the nearest distance value at any place in the space. In ray marching, the transportation of ray is decomposed into discrete steps, this is possible because the property of SDF guarantees that within this distance you won’t hit or miss anything, so that the ray can step as the <a href="https://www.google.com/search?q=ray+marching&amp;rlz=1C1GCEU_zh-CNCN855CN855&amp;tbm=isch&amp;source=iu&amp;ictx=1&amp;fir=ozxYkxrmCIjowM%253A%252CyLAtmMCY6hXOpM%252C%252Fm%252F0b2r6k&amp;vet=1&amp;usg=AI4_-kTzB3M_mZCSZwcyzO-pQdNtWB6KbQ&amp;sa=X&amp;ved=2ahUKEwj_hLud95XjAhVRFqYKHaGmBFYQ_h0wE3oECAgQBQ#imgrc=ozxYkxrmCIjowM:&amp;vet=1">figure</a> (source: Google) below:</p>
+
+<p><img src="/images/sdf/spheretrace.jpg" alt="spheretrace" /></p>
+
+<p>Based on the idea, the pseudo code of sphere tracing algorithm is rather straightforward:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">ray</span> <span class="ow">in</span> <span class="n">RaysCameraToPixel</span><span class="p">:</span>
+    <span class="n">travel</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">step</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">currentPos</span> <span class="o">=</span> <span class="n">ray</span><span class="o">.</span><span class="n">pos</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">SDF</span><span class="p">(</span><span class="n">currentPos</span><span class="p">)</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">dist</span> <span class="o">&gt;</span> <span class="n">_hit_threshold_</span> <span class="o">&amp;&amp;</span> <span class="n">step</span> <span class="o">&lt;</span> <span class="n">_max_step_</span><span class="p">):</span>	<span class="c1"># not hit &amp; not overstep
+</span>        <span class="n">travel</span> <span class="o">+=</span> <span class="n">dist</span>	<span class="c1"># march a step
+</span>        <span class="n">step</span> <span class="o">+=</span> <span class="mi">1</span>	<span class="c1"># increase step counter
+</span>        <span class="n">currentPos</span> <span class="o">=</span> <span class="n">ray</span><span class="o">.</span><span class="n">pos</span> <span class="o">+</span> <span class="n">ray</span><span class="o">.</span><span class="nb">dir</span> <span class="o">*</span> <span class="n">travel</span>	<span class="c1"># next position
+</span>        <span class="n">dist</span> <span class="o">=</span> <span class="n">SDF</span><span class="p">(</span><span class="n">currentPos</span><span class="p">)</span>	<span class="c1"># sdf query
+</span>    <span class="c1"># hit
+</span>    <span class="n">shading</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>noted that we should set an upper bound for marching step, otherwise when a ray is almost parallel to a surface, the distance may converge very slow thus time consuming.</p>
+
+<h5 id="implicit-distance-functions"><a href="http://www.iquilezles.org/www/articles/distfunctions/distfunctions.htm">Implicit distance functions</a></h5>
+
+<p>Implicit distance function is an analytical function that represents the distance to a much regular object in the space, introduced by Íñigo Quílez. The functions help represent a huge class of constructive geometries,  and are at many places used demos of distance functions. In our project we combine the bunny mesh and some basic geometries, rendering them together in a scene, as you may check in Chapter 4.</p>
+
+<h4 id="33-distance-field-representation">3.3 Distance Field Representation</h4>
+
+<p><img src="/images/sdf/Code-DF.png" alt="Code-DF" /></p>
+
+<p>The <code class="highlighter-rouge">class DistanceFieldData</code> consists of necessary data that represent the distance field of a mesh. The basic idea during this class design is considering how can we retrieve distance data in an efficient way, hence we restore the bounding box of the distance field and its size of grid. Besides the most important distance values, we also keeps the positions of the center of each grid as landmarks, avoiding the recalculation at render time.</p>
+
+<p>You might discover that distance fields keep another bounding box apart from the original mesh, and we note that the bounding box of distance field should be bit <strong>larger</strong>, this is due to the fact that you cannot generate a global distance field of a scene (because of limited RAM) therefore must keep the distance field of meshes locally; when a ray travels in the scene, there should be a transfer step before which the marching uses global SDF while after which uses local SDF, plus that this transfer shouldn’t be exactly on the border of the distance field, so use the <em>mesh</em> bounding box as the border.</p>
+
+<p><img src="/images/sdf/DF-illust.png" alt="DF-illust" /></p>
+
+<h4 id="34-soft-shadows-and-ambient-occlusion">3.4 Soft shadows and Ambient Occlusion</h4>
+
+<h5 id="soft-shadows">Soft shadows</h5>
+
+<p>Soft shadows we use in this project is also known as the <strong>penumbra</strong>, these are certain areas of surface which is lighted but also somewhat occluded; Usually, this effect happens when the light source is larger than the object receiving light, while in the project we use a global directional light but inherit the basic idea. The Huygens–Fresnel principle indicates that a wavefront of light can be treated equally as a series of light sources, each of which continue to beam light to latter phases, so when the light path reaches near an opaque object, the light is partially occluded, that’s how we calculate soft shadows here.</p>
+
+<p><img src="/images/sdf/Light-illust.jpg" alt="Light-illust" /></p>
+
+<p>The source code of soft shadow calculation is given below, the parameters are named as their meanings.</p>
+
+<p><img src="/images/sdf/Code-softshadow.png" alt="Code-softshadow" /></p>
+
+<h5 id="ambient-occlusion">Ambient Occlusion</h5>
+
+<p>Ambient Occlusion is another shadowing effect that add soft shadows to a scene to make it looks good. The general idea is that opaque objects can influence ambient lights casting on other objects, however, to check if objects are close to one another is not that easy, so people have introduced cheaper approximation like Screen Space Ambient Occlusion (SSAO), Screen Space Directional Occlusion (SSDO), etc. They sometimes look fine while in other times create artefacts.</p>
+
+<p>Distance Field Ambient Occlusion (DFAO) comes with distance field with almost no extra cost, with merely several more steps of SDF texturing it could create plausible realistic effects; the idea is also very intuitive: closer sample (step) points contributes more to the ambient occlusion to a surface, and closer objects create denser occlusion. Codes are shown below.</p>
+
+<p><img src="/images/sdf/Code-ao.png" alt="Code-ao" /></p>
+
+<h2 id="4-outcomes">4. Outcomes</h2>
+
+<h4 id="41-screenshots">4.1 Screenshots</h4>
+
+<p>The completion of this project takes some time, I make a recording screen-shot at each milestone. You may find the screen shots in the local folder <strong>./shots</strong></p>
+
+<ol>
+  <li>After I complete the basic camera settings, the screen and the ray marching renderer, I create a plane and a sphere to test if the camera and the ray marching algorithm works fine.</li>
+</ol>
+
+<p><img src="/images/sdf/2019-06-25 02_14_09.bmp" alt="2019-06-25 02:14:09" /></p>
+
+<ol>
+  <li>After finishing the mesh importing and the distance field generation function, I use the generated distance function into the renderer, and it seems that the voxels are correctly detected.</li>
+</ol>
+
+<p><img src="/images/sdf/2019-06-28 16_53_33.bmp" alt="2019-06-28 16:53:33" /></p>
+
+<ol>
+  <li>Instead of returning the value at the center of the voxel, now the distance function applies tri-linear interpolation, and the soft shadow part is added. Noted that the resolution of SDF is low at present, so the ears of bunny are flawed.</li>
+</ol>
+
+<p><img src="/images/sdf/2019-06-28 20_41_48.bmp" alt="2019-06-28 20:41:48" /></p>
+
+<ol>
+  <li>It takes some time to generate a more accurate distance field, now the bunny looks better; also at this time, to avoid regenerating the distance field every run, I give names to meshes, and add functions to import and export distance fields with files.</li>
+</ol>
+
+<p><img src="/images/sdf/2019-06-29 09_20_22.bmp" alt="2019-06-29 09_20_22" /></p>
+
+<ol>
+  <li>Then I referred to the distance functions of geometries, put them together with the bunny.</li>
+</ol>
+
+<p><img src="/images/sdf/2019-06-29 11_10_34.bmp" alt="2019-06-29 11:10:34" /></p>
+
+<ol>
+  <li>Now it’s time to give them colors, same time I add the ambient occlusion part into shading function.</li>
+</ol>
+
+<p><img src="/images/sdf/2019-07-02 10_39_05.bmp" alt="2019-07-02 10_39_05" /></p>
+
+<p>To help you identify the AO effect much clearer, I make a comparison here:</p>
+
+<p><img src="/images/sdf/Compare-ao.png" alt="Compare-ao" /></p>
+
+<h4 id="42-running-time">4.2 Running time</h4>
+
+<p>When the screen size is set 500x500 pixels, the render fps is about 2 frames/second, it runs slow due to large cost on SDF query, but if you modify the screen settings in <strong>src/parameters.h</strong>, like using a 200x200 screen, the rendering would reach real-time level.</p>
+
+<h2 id="5-discussion">5. Discussion</h2>
+
+<p>I have to admit that this project can be further improved, I’ve met some problems but also find some solutions, with motivation I would spend time to complete my ToDo’s and find out more to be done.</p>
+
+<p>The current implementation is slow on SDF generation, which is the very first task I would work with. It also have some problem with visual effects (sometimes), that the bounding box of the bunny may influence the ambient occlusion calculation, as you may see in the following picture, there’s a light square beneath the bunny, this happens when you adjust the step size of ambient occlusion, and I believe the core of this problem is the discontinuity of the global distance field, at the border of the bunny’s mesh box. I’ll look into this and alleviate the artefect.</p>
+
+<p><img src="/images/sdf/2019-06-29 14_36_14.bmp" alt="2019-06-29 14:36:14" /></p>
+
+<h2 id="6-declaration">6. Declaration</h2>
+
+<p>I hereby declare that the documents and codes of this project are completed by my self, work that doesn’t belong to me are all noted in reference.</p>
+
+<h2 id="7-reference">7. Reference</h2>
+
+<ol>
+  <li>Sramek, M. . (2006). 3d distance fields: a survey of techniques and applications. IEEE Transactions on Visualization &amp; Computer Graphics, 12(4), 581-599.</li>
+  <li><a href="http://www.iquilezles.org/www/articles/distfunctions/distfunctions.htm">Íñigo Quílez: Distance functions</a></li>
+  <li><a href="https://docs.unrealengine.com/en-US/Engine/Rendering/LightingAndShadows/DistanceFieldAmbientOcclusion/index.html">Unreal Engine 4: Distance Field Ambient Occlusion</a></li>
+  <li><a href="https://www.youtube.com/watch?v=oAS74MscuLY&amp;list=PL3POsQzaCw53iK_EhOYR39h1J9Lvg-m-g&amp;index=1">Youtube: A ray marching shader tutorial</a></li>
+  <li><a href="https://learnopengl.com/Model-Loading/Assimp">LearnOpenGL.com: Assimp and basic mesh loading</a></li>
+</ol>
+:ET

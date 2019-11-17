@@ -1,0 +1,47 @@
+I"~<p><img src="/images/sdfu/screenshot.png" alt="screenshot preview" />
+<a href="https://github.com/ZephyrL/DFAO-unity">[Link to this project]</a>  on Github.</p>
+
+<p>This project is using an offline SDF baker (SDFr), and maintaining global distance field at runtime.
+Current shadowing functions run at about 120 fps, while I guess it would be more suitable for generally static scenes, which means that you’d better to use it for things that seldom change or move, to avoid efficiency problems.</p>
+
+<p>There are some slides with videos to illustrate the project better (in the Github repository), originally it was not written in English and was converted by google translate, please check it you’d like to. Anyway, you could get a preview of the result from the following screenshots.</p>
+
+<p><img src="/images/sdfu/screenshot2.png" alt="screenshot" /></p>
+
+<h2 id="whats-it-about">What’s it about?</h2>
+
+<p>The work of this project is originally completed through an internship at NetEase Inc., it includes:</p>
+<ul>
+  <li>Research on the use of S DistanceField Field</li>
+  <li>Unity implementation: Offline baking of local SDF smodels</li>
+  <li>Unity implementation: Global SDF for real-time maintenance, global Distance Field</li>
+  <li>Unity implementation: GDF-based real-time soft shadows and ambient occlusion rendering</li>
+</ul>
+
+<h2 id="what-is-a-signed-distance-field-sdf">What is a signed distance field (SDF)?</h2>
+
+<p>Distance field is a form of mapping in 2D/3D space: from any point <em>p</em>,  mapping to the distance <em>d</em> to the nearest boundary (2D) or plane (3D) in the space.</p>
+
+<p>Distance fields have many categories, SDF is one of them, which is characterized by distinguishing the inner and outer properties of the grid, with a positive distance outside the grid and a negative one inside.</p>
+
+<p>SDF’s application in 2D space is mainly font rendering, proposed by Valve in 2006.</p>
+
+<p>Applications of SDF in 3D space include collision detection, model representation and deformation, ambient occlusion, soft shadowing, etc.</p>
+
+<h2 id="content-of-this-project">Content of this project</h2>
+
+<h3 id="sdfbaker">SDFBaker</h3>
+
+<p><img src="/images/sdfu/sdfbaker.png" alt="sdfbaker" /></p>
+
+<p>SDFBaker.cs a monobehavior script that can be attached on objects with mesh or children containing mesh</p>
+
+<p>SDFBaker bakes out SDF data for the collection of all mesh under this object, ant it is offline, and the baking results are written to disk for reuse and instantiation of object.</p>
+
+<p><img src="/images/sdfu/bakerclass.png" alt="class" /></p>
+
+<p>The class diagram of SDFBaker is shown above, the basic interfaces are already provided, and SDF baker is just one implementation of possible baker on this framework. You could even use it to implement bakers for something else.</p>
+
+<p><img src="/images/sdfu/gdfupdate.png" alt="gdf" />
+D:\VisualStudioCodeProject\portfolio\images\sdfu</p>
+:ET

@@ -1,0 +1,40 @@
+I"�	<p><img src="/images/srs/srs.png" alt="preview" />
+<a href="https://zephyrl.github.io/infoVis-pro3proto/">[Link]</a> to the visualization</p>
+
+<p>Project Stockholm Royal Seaport is collaboration of Stockholm Stad and our visualization group, the aim of this programme is to provide straightforward visuals for the data of this construction region, including construction status, substainability, transport convenience, etc. The database is provided by Stockhold Stad, and our main challenge is find the right approach to make them explicable and intuitive.</p>
+
+<p>Our teammate Sabina created a site to better illustrate this project, here is the <a href="http://sabinavonessen.me/royalseaport/">link to the site</a>;</p>
+
+<p>However, you could still get a preview of this project by try it yourself.</p>
+
+<h3 id="phases-view">Phases View</h3>
+
+<p>A <strong>Phase</strong> is defined by Stockholm Stad as a region of construction, usually the whole phase is either completed/under-construction or in-design. By click on the empty space of a phase you could get a summary for that phase, as follows:</p>
+
+<p><img src="/images/srs/phase.png" alt="phase" /></p>
+
+<p>The sunburst diagram enables you to click on any entity and see the detail of it, and by clicking the center of the diagram you could go back to upper hierachy.</p>
+
+<h3 id="construction-view">Construction View</h3>
+
+<p>You might have already seen that when you are hovering on any house icon, there pops up a window to provide you with at brief introduction of it:</p>
+
+<p><img src="/images/srs/house.png" alt="house" /></p>
+
+<p>and by clicking it you open a new window to see its status and many other data.</p>
+
+<p><img src="/images/srs/house-1.png" alt="house-data" /></p>
+
+<h3 id="filters">Filters</h3>
+
+<p>The filters on the left side helps you to make comparisons among all the phases and buildings, it is also one of the important demands of the Stockholm Stad. By clicking diffenct filters you would see the color of icons changing, varying from red to yellow to green, and to be intuitive, ususally a red color means “not good” and a green means “good”. Take transportation as an example, the red houses means there are fewer slot of bicycle slots for that building, and vice versa.</p>
+
+<p><img src="/images/srs/filter.png" alt="filter" /></p>
+
+<p>The icons are also sorted and placed on the color bar at the bottom-right corner, either by hovering or by clicking you could access the construction of that certain level.</p>
+
+<p>Have fun with it!</p>
+
+<p>2019-03-15</p>
+
+:ET
